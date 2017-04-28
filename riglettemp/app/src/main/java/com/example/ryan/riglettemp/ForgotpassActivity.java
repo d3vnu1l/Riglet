@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class ForgotpassActivity extends AppCompatActivity {
     private Button resetBut;
     private EditText emailET;
-    private TextView promptTV;
+    private TextView proptTV;
     private TextView screenHeader;
 
 
@@ -18,10 +18,5 @@ public class ForgotpassActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgotpass_activity);
-
-        resetBut = (Button) findViewById(R.id.resetBut);
-        emailET = (EditText) findViewById(R.id.emailET);
-        promptTV = (TextView)findViewById(R.id.promptTV);
-        screenHeader = (TextView)findViewById(R.id.screenHeader);
     }
 }
