@@ -17,13 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".ForgotpassActivity" />
-        <activity
-            android:name=".SignupActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_signup_activity"
-            android:theme="@style/FullscreenTheme" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".ChatroomActivity"></activity>
+        <activity android:name=".ChatroomActivity" />
+        <activity android:name=".SignupActivity" />
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".FriendsListActivity" />
+        <activity android:name=".EditFriendsActivity" />
+        <activity android:name=".AddFriendsActivity"></activity>
     </application>
 
 </manifest>
