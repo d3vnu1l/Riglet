@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.ryan.riglettemp.models.Message;      //Chat Message Model
+
 public class LoginActivity extends AppCompatActivity {
     private Button register_button;
     private Button forgotpass_button;
