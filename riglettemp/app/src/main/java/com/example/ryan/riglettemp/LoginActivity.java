@@ -32,8 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = enter_username.getText().toString();
-                String password = enter_password.getText().toString();
+                //String username = enter_username.getText().toString();
+                //String password = enter_password.getText().toString();
                 Intent i = new Intent(getApplicationContext(), HomeActivity.class);
                 //i.putExtra("username", username);
                 startActivity(i);
