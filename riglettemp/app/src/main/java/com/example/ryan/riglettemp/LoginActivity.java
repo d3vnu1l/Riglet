@@ -10,15 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
-    private Button signupBut;
-    private Button passwordBut;
-    private Button forgotidBut;
-    private EditText nameET;
-    private EditText passwordET;
-    private TextView screenHeader;
-    private TextView idTV;
-    private TextView passwordTV;
-    private ImageView logo;
+    private Button register_button;
+    private Button forgotpass_button;
+    private Button login_button;
+    private EditText enter_username;
+    private EditText enter_password;
+    //private ImageView imageDisplay;
 
 
     @Override
@@ -26,31 +23,35 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
 
+        register_button = (Button) findViewById(R.id.register_button);
+        forgotpass_button = (Button) findViewById(R.id.forgotpass_button);
+        login_button = (Button) findViewById(R.id.login_button);
 
-        signupBut = (Button) findViewById(R.id.signupBut);
-        passwordBut = (Button) findViewById(R.id.passwordBut);
-        forgotidBut = (Button) findViewById(R.id.forgotidBut);
+        enter_password = (EditText) findViewById(R.id.enter_password);
 
-        nameET = (EditText) findViewById(R.id.nameET);
-        passwordET = (EditText) findViewById(R.id.passwordET);
-
-        screenHeader = (TextView)findViewById(R.id.screenHeader);
-        idTV = (TextView)findViewById(R.id.idTV);
-        passwordTV = (TextView)findViewById(R.id.passwordTV);
-
-        screenHeader.setText("Log In");
-        screenHeader.setText("Unique ID");
-        screenHeader.setText("Password");
-
-        signupBut.setOnClickListener(new View.OnClickListener() {
-            /*
+        login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), Main2Activity.class);
-                i.putExtra("username", usename.getText().toString());
+                String username = enter_username.getText().toString();
+                String password = enter_password.getText().toString();
+                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                //i.putExtra("username", username);
                 startActivity(i);
             }
-            */
+        });
+        forgotpass_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), ForgotpassActivity.class);
+                startActivity(i);
+            }
+        });
+        register_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SignupActivity.class);
+                startActivity(i);
+            }
         });
     }
 }

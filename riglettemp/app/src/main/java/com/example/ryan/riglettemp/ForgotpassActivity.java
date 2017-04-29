@@ -7,16 +7,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class ForgotpassActivity extends AppCompatActivity {
-    private Button resetBut;
-    private EditText emailET;
-    private TextView proptTV;
-    private TextView screenHeader;
-
-
+    //private Button resetBut;
+    private EditText enter_email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgotpass_activity);
+
+        enter_email = (EditText) findViewById(R.id.enter_email);
     }
 }
