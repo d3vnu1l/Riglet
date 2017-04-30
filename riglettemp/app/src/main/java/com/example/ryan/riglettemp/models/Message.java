@@ -5,18 +5,11 @@ package com.example.ryan.riglettemp.models;
  */
 
 public class Message {
-    private long id;
-    private boolean isMe;
-    private String message;
-    private Long userId;
-    private String dateTime;
+    private boolean isMe;       //flags receive / send
+    private String message;     //actual text message
+    private Long userId;        //unique user ID
+    private String dateTime;    //date / time of message
 
-    public long getId() {
-        return id;
-    }
-    public void setId(long id) {
-        this.id = id;
-    }
     public boolean getIsme() {
         return isMe;
     }
@@ -32,15 +25,12 @@ public class Message {
     public long getUserId() {
         return userId;
     }
-
     public void setUserId(long userId) {
         this.userId = userId;
     }
-
     public String getDate() {
         return dateTime;
     }
-
     public void setDate(String dateTime) {
         this.dateTime = dateTime;
     }
