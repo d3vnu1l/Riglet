@@ -1,9 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.ryan.riglettemp.EditFriendsActivity">
+    android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:background="#36A128"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:gravity="center"
+            android:text="Change Display name to: "
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/EditFriendDisplayName"
+            android:hint="New Display Name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:gravity="center_horizontal"
+            android:fontFamily="cursive" />
+
+        <Button
+            android:id="@+id/EditFriendSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="Save Changed Display Name"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp">
+        </Button>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="100dp"
+            android:gravity="center"
+            android:text="Delete Friend?"
+            android:textSize="24sp"/>
+
+
+        <Button
+            android:id="@+id/EditFriendDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="Yes, delete friend"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="80dp">
+        </Button>
+
+
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="#28731D"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+
+        <Button
+            android:id="@+id/Home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/home"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+        <Button
+            android:id="@+id/FrindsList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/friends_group"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+        <Button
+            android:id="@+id/AddFriend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/add_friend"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+
+        </Button>
+        <Button
+            android:id="@+id/Settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+        <Button
+            android:id="@+id/LogOut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logout"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+    </LinearLayout>
+
+
+</LinearLayout>

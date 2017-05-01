@@ -1,9 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.ryan.riglettemp.FriendsListActivity">
+    android:layout_height="match_parent">
 
-</android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="7"
+        android:background="#36A128"
+        android:orientation="vertical">
+
+        //Input Your Code Here
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="#28731D"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <Button
+            android:id="@+id/Home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/home"></Button>
+
+        <Button
+            android:id="@+id/FrindsList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/friends_group"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+        <Button
+            android:id="@+id/AddFriend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/add_friend">
+
+        </Button>
+
+        <Button
+            android:id="@+id/Settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+        <Button
+            android:id="@+id/LogOut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logout"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+    </LinearLayout>
+
+
+</LinearLayout>
