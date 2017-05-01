@@ -3,13 +3,12 @@ package com.example.ryan.riglettemp.models;
 import java.util.List;
 
 /**
- * Created by ThinkPad-OwnerX220 on 4/30/2017.
+ * Created by ryan on 4/30/2017.
  */
 
-public class User{
+public class Friend{
     private String firstName;
     private String lastName;
     private boolean gender;
-    private List<Friend> Friends;
-
+    private List<Message> Messages;
 }
