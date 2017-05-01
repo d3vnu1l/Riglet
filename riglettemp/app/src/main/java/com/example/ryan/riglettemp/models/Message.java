@@ -7,31 +7,35 @@ package com.example.ryan.riglettemp.models;
 public class Message {
     private boolean isMe;       //flags receive / send
     private String message;     //actual text message
-    private Long userId;        //unique user ID
-    private String dateTime;    //date / time of message
+    private int userId;        //unique user ID
+
+    public Message(String message, boolean isMe, int userId) {
+        this.message = message;
+        this.isMe = isMe;
+        this.userId = userId;
+    }
 
     public boolean getIsme() {
         return isMe;
     }
-    public void setMe(boolean isMe) {
-        this.isMe = isMe;
-    }
+
     public String getMessage() {
         return message;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    /*
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
     public void setMessage(String message) {
         this.message = message;
     }
-    public long getUserId() {
-        return userId;
+    public void setMe(boolean isMe) {
+        this.isMe = isMe;
     }
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-    public String getDate() {
-        return dateTime;
-    }
-    public void setDate(String dateTime) {
-        this.dateTime = dateTime;
-    }
+    */
 }

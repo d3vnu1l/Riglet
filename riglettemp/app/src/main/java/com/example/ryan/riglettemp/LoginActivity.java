@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //String username = enter_username.getText().toString();
                 //String password = enter_password.getText().toString();
-                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);
                 //i.putExtra("username", username);
                 startActivity(i);
             }

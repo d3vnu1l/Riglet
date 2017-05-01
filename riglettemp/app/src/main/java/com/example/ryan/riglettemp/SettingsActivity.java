@@ -16,11 +16,14 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        /*
+        //XML items
         home = (Button) findViewById(R.id.home);
         friendsList = (Button) findViewById(R.id.friendsList);
         addFriend = (Button) findViewById(R.id.addFriend);
         settings = (Button) findViewById(R.id.settings);
         logOut = (Button) findViewById(R.id.logOut);
+        */
 
     }
 }
