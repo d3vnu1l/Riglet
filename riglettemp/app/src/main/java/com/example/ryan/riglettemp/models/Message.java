@@ -7,12 +7,10 @@ package com.example.ryan.riglettemp.models;
 public class Message {
     private boolean isMe;       //flags receive / send
     private String message;     //actual text message
-    private int userId;        //unique user ID
 
-    public Message(String message, boolean isMe, int userId) {
+    public Message(String message, boolean isMe) {
         this.message = message;
         this.isMe = isMe;
-        this.userId = userId;
     }
 
     public boolean getIsme() {
@@ -22,20 +20,4 @@ public class Message {
     public String getMessage() {
         return message;
     }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    /*
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-    public void setMessage(String message) {
-        this.message = message;
-    }
-    public void setMe(boolean isMe) {
-        this.isMe = isMe;
-    }
-    */
 }

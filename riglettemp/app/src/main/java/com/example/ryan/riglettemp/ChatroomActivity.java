@@ -27,7 +27,6 @@ public class ChatroomActivity extends AppCompatActivity {
     private View btnSend;
     private EditText messageInput;
     boolean isMe = true;
-    private int userId = 1234;
     private List<Message> Messages;
     private ArrayAdapter<Message> adapter;
 
@@ -55,6 +54,8 @@ public class ChatroomActivity extends AppCompatActivity {
         adapter = new ChatAdapter(this, R.layout.chatbubble_right, Messages);
         listView.setAdapter(adapter);
 
+        //1. need to populate messages here after receiving user ID
+
         //send event
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,11 +64,11 @@ public class ChatroomActivity extends AppCompatActivity {
                     Toast.makeText(ChatroomActivity.this, "Please input some text...", Toast.LENGTH_SHORT).show();
                 } else {
                     //add message to list
-                    Message Message = new Message(messageInput.getText().toString(), isMe, userId);
+                    Message Message = new Message(messageInput.getText().toString(), isMe);
                     Messages.add(Message);
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
-                    if (isMe) {
+                    if (isMe) {     //toggle isMe for testing
                         isMe = false;
                     } else {
                         isMe = true;
