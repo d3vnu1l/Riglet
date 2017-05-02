@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.ryan.riglettemp.models.ChatAdapter;
 import com.example.ryan.riglettemp.models.Message;
+import com.example.ryan.riglettemp.models.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,16 +27,23 @@ public class ChatroomActivity extends AppCompatActivity {
     private ListView listView;
     private View btnSend;
     private EditText messageInput;
-    boolean isMe = true;
     private List<Message> Messages;
     private ArrayAdapter<Message> adapter;
+    private User Me;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatroom_activity);
 
-        Messages = new ArrayList<>();
+        //get user object from parcelable
+        Intent i = getIntent();
+
+        Bundle oldBundle = i.getBundleExtra("bundle");
+        Me = oldBundle.getParcelable("User");
+        i.setExtrasClassLoader(getClassLoader());
+
+
 
         /*
         //XML items
@@ -51,7 +59,7 @@ public class ChatroomActivity extends AppCompatActivity {
         messageInput = (EditText) findViewById(R.id.msg_type);
 
         //listview adapter
-        adapter = new ChatAdapter(this, R.layout.chatbubble_right, Messages);
+        adapter = new ChatAdapter(this, R.layout.chatbubble_right, Me.getMessages(1234));
         listView.setAdapter(adapter);
 
         //1. need to populate messages here after receiving user ID
@@ -64,15 +72,9 @@ public class ChatroomActivity extends AppCompatActivity {
                     Toast.makeText(ChatroomActivity.this, "Please input some text...", Toast.LENGTH_SHORT).show();
                 } else {
                     //add message to list
-                    Message Message = new Message(messageInput.getText().toString(), isMe);
-                    Messages.add(Message);
+                    Me.addMessage(1234, messageInput.getText().toString(), true);
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
-                    if (isMe) {     //toggle isMe for testing
-                        isMe = false;
-                    } else {
-                        isMe = true;
-                    }
                 }
             }
         });
