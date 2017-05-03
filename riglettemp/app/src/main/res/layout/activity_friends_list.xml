@@ -22,7 +22,11 @@
         android:background="#36A128"
         android:orientation="vertical">
 
-        //Input Your Code Here
+        <ListView
+            android:layout_weight="1"
+            android:id="@+id/phoneTypeListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"></ListView>
 
     </LinearLayout>
 
