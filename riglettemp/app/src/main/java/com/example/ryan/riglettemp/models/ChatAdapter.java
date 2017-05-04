@@ -27,29 +27,20 @@ public class ChatAdapter extends ArrayAdapter<Message> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Get the data item for this position
-        Message tempmes = getItem(position);
+        Message tempmes = getItem(position);            // Get the data item for this position
 
-        // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
-        //if (convertView == null) {                                                            //view recycling is disabled to prevent message draw error.
-            // If there's no view to re-use, inflate a brand new view for row
-            viewHolder = new ViewHolder();
-            LayoutInflater inflater = LayoutInflater.from(getContext());
-            if(list.get(position).getIsme()) {
-                convertView = inflater.inflate(R.layout.chatbubble_right, parent, false);
-            }
-            else{
-                convertView = inflater.inflate(R.layout.chatbubble_left, parent, false);
-            }
-            viewHolder.txt_msg = (TextView) convertView.findViewById(R.id.txt_msg);
-            // Cache the viewHolder object inside the fresh view
-            convertView.setTag(viewHolder);
-        //} else {
-            // View is being recycled, retrieve the viewHolder object from tag
-
-            viewHolder = (ViewHolder) convertView.getTag();
-        //}
+        viewHolder = new ViewHolder();
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        if(list.get(position).getIsme()) {
+            convertView = inflater.inflate(R.layout.chatbubble_right, parent, false);
+        }
+        else{
+            convertView = inflater.inflate(R.layout.chatbubble_left, parent, false);
+        }
+        viewHolder.txt_msg = (TextView) convertView.findViewById(R.id.txt_msg);
+        // Cache the viewHolder object inside the fresh view
+        convertView.setTag(viewHolder);
         // Populate the data from the data object via the viewHolder object
         // into the template view.
         viewHolder.txt_msg.setText(tempmes.getMessage());
@@ -72,9 +63,5 @@ public class ChatAdapter extends ArrayAdapter<Message> {
 
     private static class ViewHolder {
         TextView txt_msg;
-    }
-
-    public Message getItem(int position){
-        return list.get(position);
     }
 }

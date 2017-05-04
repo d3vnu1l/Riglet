@@ -69,6 +69,8 @@ public class LoginActivity extends AppCompatActivity {
                 Me.addMessage(1234, "testing", true);
                 Me.addMessage(1234, "test", true);
 
+                //Code for packing the 'User' object, and sending it to the next activity
+                //      User block of code any time you need to send the 'User' to a new screen
                 Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);
                 i.setExtrasClassLoader(getClassLoader());
                 Bundle bundle = new Bundle();
