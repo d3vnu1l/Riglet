@@ -3,6 +3,7 @@ package com.example.ryan.riglettemp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -54,12 +55,12 @@ public class ChatroomActivity extends AppCompatActivity {
         //logOut = (Button) findViewById(R.id.logOut);
         */
 
-        listView = (ListView) findViewById(R.id.list_msg);
         btnSend = findViewById(R.id.btn_chat_send);
         messageInput = (EditText) findViewById(R.id.msg_type);
 
         //listview adapter
-        adapter = new ChatAdapter(this, R.layout.chatbubble_right, Me.getMessages(1234));
+        adapter = new ChatAdapter(this, Me.getMessages(1234));
+        listView = (ListView) findViewById(R.id.list_msg);
         listView.setAdapter(adapter);
 
         //1. need to populate messages here after receiving user ID
@@ -73,6 +74,12 @@ public class ChatroomActivity extends AppCompatActivity {
                 } else {
                     //add message to list
                     Me.addMessage(1234, messageInput.getText().toString(), true);
+                    ArrayList<Message> temp = Me.getMessages(1234);
+                    for(int i=0; i<temp.size(); i++) {
+                        Message tempmes = temp.get(i);
+                        Log.d("messagse", String.valueOf(tempmes.getIsme()));
+                    }
+
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
                 }

@@ -1,6 +1,8 @@
 package com.example.ryan.riglettemp.models;
 
 import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,45 +12,48 @@ import android.widget.TextView;
 import com.example.ryan.riglettemp.R;
 import com.example.ryan.riglettemp.models.Message;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChatAdapter extends ArrayAdapter<Message> {
+    // View lookup cache
+    ArrayList<Message> list;
+    private Context context;
 
-    private Activity activity;
-    private List<Message> messages;
-
-    public ChatAdapter(Activity context, int resource, List<Message> objects) {
-        super(context, resource, objects);
-        this.activity = context;
-        this.messages = objects;
+    public ChatAdapter(Context context, ArrayList<Message> messages) {
+        super(context, R.layout.chatbubble_left, messages);
+        this.list=messages;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
+        // Get the data item for this position
+        Message tempmes = getItem(position);
 
-        int layoutResource = 0; // determined by view type
-        Message Message = getItem(position);
-        int viewType = getItemViewType(position);
+        // Check if an existing view is being reused, otherwise inflate the view
+        ViewHolder viewHolder; // view lookup cache stored in tag
+        //if (convertView == null) {                                                            //view recycling is disabled to prevent message draw error.
+            // If there's no view to re-use, inflate a brand new view for row
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            if(list.get(position).getIsme()) {
+                convertView = inflater.inflate(R.layout.chatbubble_right, parent, false);
+            }
+            else{
+                convertView = inflater.inflate(R.layout.chatbubble_left, parent, false);
+            }
+            viewHolder.txt_msg = (TextView) convertView.findViewById(R.id.txt_msg);
+            // Cache the viewHolder object inside the fresh view
+            convertView.setTag(viewHolder);
+        //} else {
+            // View is being recycled, retrieve the viewHolder object from tag
 
-        if (Message.getIsme()) {
-            layoutResource = R.layout.chatbubble_right;
-        } else {
-            layoutResource = R.layout.chatbubble_left;
-        }
-
-        if (convertView != null) {
-            holder = (ViewHolder) convertView.getTag();
-        } else {
-            convertView = inflater.inflate(layoutResource, parent, false);
-            holder = new ViewHolder(convertView);
-            convertView.setTag(holder);
-        }
-
-        //set message content
-        holder.msg.setText(Message.getMessage());
-
+            viewHolder = (ViewHolder) convertView.getTag();
+        //}
+        // Populate the data from the data object via the viewHolder object
+        // into the template view.
+        viewHolder.txt_msg.setText(tempmes.getMessage());
+        // Return the completed view to render on screen
         return convertView;
     }
 
@@ -65,11 +70,11 @@ public class ChatAdapter extends ArrayAdapter<Message> {
         return position % 2;
     }
 
-    private class ViewHolder {
-        private TextView msg;
+    private static class ViewHolder {
+        TextView txt_msg;
+    }
 
-        public ViewHolder(View v) {
-            msg = (TextView) v.findViewById(R.id.txt_msg);
-        }
+    public Message getItem(int position){
+        return list.get(position);
     }
 }
