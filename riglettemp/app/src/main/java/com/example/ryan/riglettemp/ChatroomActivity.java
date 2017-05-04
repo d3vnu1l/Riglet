@@ -39,7 +39,6 @@ public class ChatroomActivity extends AppCompatActivity {
 
         //get user object from parcelable
         Intent i = getIntent();
-
         Bundle oldBundle = i.getBundleExtra("bundle");
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
@@ -59,7 +58,7 @@ public class ChatroomActivity extends AppCompatActivity {
         messageInput = (EditText) findViewById(R.id.msg_type);
 
         //listview adapter
-        adapter = new ChatAdapter(this, Me.getMessages(1234));
+        adapter = new ChatAdapter(this, Me.getMessages("radeushane"));
         listView = (ListView) findViewById(R.id.list_msg);
         listView.setAdapter(adapter);
 
@@ -73,13 +72,12 @@ public class ChatroomActivity extends AppCompatActivity {
                     Toast.makeText(ChatroomActivity.this, "Please input some text...", Toast.LENGTH_SHORT).show();
                 } else {
                     //add message to list
-                    Me.addMessage(1234, messageInput.getText().toString(), true);
-                    ArrayList<Message> temp = Me.getMessages(1234);
+                    Me.addMessage("radeushane", messageInput.getText().toString(), true);
+                    ArrayList<Message> temp = Me.getMessages("radeushane");
                     for(int i=0; i<temp.size(); i++) {
                         Message tempmes = temp.get(i);
                         Log.d("messagse", String.valueOf(tempmes.getIsme()));
                     }
-
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
                 }

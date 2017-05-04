@@ -3,7 +3,6 @@ package com.example.ryan.riglettemp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +13,7 @@ public class User implements Parcelable{
     private String firstName;
     private String lastName;
     private boolean gender;
-    private int uID;
+    private String uID;
     private ArrayList<Friend> Friends;
 
     ///*
@@ -30,7 +29,7 @@ public class User implements Parcelable{
         out.writeString(firstName);
         out.writeString(lastName);
         out.writeValue(gender);
-        out.writeInt(uID);
+        out.writeString(uID);
         out.writeList(Friends);
     }
 
@@ -50,7 +49,7 @@ public class User implements Parcelable{
         this.firstName = in.readString();
         this.lastName = in.readString();
         this.gender = (boolean)in.readValue( null );
-        this.uID = in.readInt();
+        this.uID = in.readString();
         this.Friends = new ArrayList<Friend>();
         in.readList(this.Friends, Friend.class.getClassLoader());
     }
@@ -60,10 +59,10 @@ public class User implements Parcelable{
         this.firstName = new String();
         this.lastName = new String();
         this.gender = false;
-        this.uID = 0;
+        this.uID = "placeholderUID";
         this.Friends = new ArrayList<>();
     }
-    public User(String firstName, String lastName, boolean gender, int uID){
+    public User(String firstName, String lastName, boolean gender, String uID){
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -77,16 +76,16 @@ public class User implements Parcelable{
     public boolean getGender(){ return gender;}
     public ArrayList<Friend> getFriends(){ return Friends;}
         //GET functions (OVERLOADED for friends)
-    public String getFirstName(int uID){
+    public String getFirstName(String uID){
         return this.Friends.get(findFriendIndex(uID)).getFirstName();
     }
-    public String getLastName(int uID){
+    public String getLastName(String uID){
         return this.Friends.get(findFriendIndex(uID)).getLastName();
     }
-    public boolean getGender(int uID){
+    public boolean getGender(String uID){
         return this.Friends.get(findFriendIndex(uID)).getGender();
     }
-    public ArrayList<Message> getMessages(int uID){
+    public ArrayList<Message> getMessages(String uID){
         return (this.Friends.get(findFriendIndex(uID))).getMessages();
     }
 
@@ -95,19 +94,19 @@ public class User implements Parcelable{
     public void editLastName(String ln){ this.lastName = ln; }
     public void editGender(boolean gen){ this.gender = gen; }
         //Edit functions (OVERLOADED for friends)
-    public void editFirstName(int uID, String fn){
+    public void editFirstName(String uID, String fn){
         int index = findFriendIndex(uID);
         Friend Friend_temp = this.Friends.get(index);
         Friend_temp.editFirstName(fn);
         this.Friends.set(index, Friend_temp);
     }
-    public void editLastName(int uID, String ln){
+    public void editLastName(String uID, String ln){
         int index = findFriendIndex(uID);
         Friend Friend_temp = this.Friends.get(index);
         Friend_temp.editLastName(ln);
         this.Friends.set(index, Friend_temp);
     }
-    public void editGender(int uID, boolean gen){
+    public void editGender(String uID, boolean gen){
         int index = findFriendIndex(uID);
         Friend Friend_temp = this.Friends.get(index);
         Friend_temp.editGender(gen);
@@ -115,15 +114,15 @@ public class User implements Parcelable{
     }
 
     //Add/Remvoe functions
-    public void removeFriend(int uID){
+    public void removeFriend(String uID){
         int index = findFriendIndex(uID);
         this.Friends.remove(index);
     }
-    public void addFriend(String firstName, String lastName, boolean gender, int uID){
+    public void addFriend(String firstName, String lastName, boolean gender, String uID){
         Friend Friend_temp = new Friend(firstName, lastName, gender, uID);
         this.Friends.add(Friend_temp);
     }
-    public void addMessage(int uID, String message, boolean isMe){
+    public void addMessage(String uID, String message, boolean isMe){
         int index = findFriendIndex(uID);
         Message Message_temp = new Message(message, isMe);  //form message
         Friend Friend_temp = this.Friends.get(index);
@@ -132,9 +131,9 @@ public class User implements Parcelable{
     }
     //Find function (INTERNAL use only)
     //note this is terribly inefficient, hashmap would be better
-    private int findFriendIndex(int uID){
+    private int findFriendIndex(String uID){
         for (int i = 0; i < this.Friends.size(); i++) {
-            if (this.Friends.get(i).getUID() == uID) {
+            if (this.Friends.get(i).getUID().equals(uID)) {
                 //return this.Friends.get(i);
                 return i;
             }

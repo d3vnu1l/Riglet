@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#2f2"
+    android:background="#006400"
     tools:context="com.example.ryan.riglettemp.SignupActivity">
 
     <TextView

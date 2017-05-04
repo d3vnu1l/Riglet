@@ -3,7 +3,6 @@ package com.example.ryan.riglettemp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +13,7 @@ public class Friend implements Parcelable{
     private String firstName;
     private String lastName;
     private boolean gender;
-    private int uID;
+    private String uID;
     private ArrayList<Message> Messages;
 
     // 99.9% of the time you can just ignore this
@@ -29,7 +28,7 @@ public class Friend implements Parcelable{
         out.writeString(firstName);
         out.writeString(lastName);
         out.writeValue(gender);
-        out.writeInt(uID);
+        out.writeString(uID);
         out.writeList(Messages);
     }
 
@@ -49,7 +48,7 @@ public class Friend implements Parcelable{
         this.firstName = in.readString();
         this.lastName = in.readString();
         this.gender = (boolean)in.readValue( null );
-        this.uID = in.readInt();
+        this.uID = in.readString();
         this.Messages = new ArrayList<Message>();
         in.readList(this.Messages, Message.class.getClassLoader());
     }
@@ -58,11 +57,11 @@ public class Friend implements Parcelable{
         this.firstName = "";
         this.lastName = "";
         this.gender = false;
-        this.uID = 0000;
+        this.uID = "placeholderUID";
         this.Messages = new ArrayList<>();
     }
 
-    public Friend(String firstName, String lastName, boolean gender, int uID){
+    public Friend(String firstName, String lastName, boolean gender, String uID){
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -73,7 +72,7 @@ public class Friend implements Parcelable{
     public String getFirstName(){ return firstName; }
     public String getLastName(){ return lastName;}
     public boolean getGender(){ return gender;}
-    public int getUID() { return uID; }
+    public String getUID() { return uID; }
     public ArrayList<Message> getMessages(){ return Messages;}
 
 
