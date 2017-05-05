@@ -58,7 +58,7 @@ public class ChatroomActivity extends AppCompatActivity {
         messageInput = (EditText) findViewById(R.id.msg_type);
 
         //listview adapter
-        adapter = new ChatAdapter(this, Me.getMessages("radeushane"));
+        adapter = new ChatAdapter(this, Me.getMessages("asdf"));
         listView = (ListView) findViewById(R.id.list_msg);
         listView.setAdapter(adapter);
 
@@ -72,12 +72,7 @@ public class ChatroomActivity extends AppCompatActivity {
                     Toast.makeText(ChatroomActivity.this, "Please input some text...", Toast.LENGTH_SHORT).show();
                 } else {
                     //add message to list
-                    Me.addMessage("radeushane", messageInput.getText().toString(), true);
-                    ArrayList<Message> temp = Me.getMessages("radeushane");
-                    for(int i=0; i<temp.size(); i++) {
-                        Message tempmes = temp.get(i);
-                        Log.d("messagse", String.valueOf(tempmes.getIsme()));
-                    }
+                    Me.addMessage("asdf", messageInput.getText().toString(), true);
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
                 }

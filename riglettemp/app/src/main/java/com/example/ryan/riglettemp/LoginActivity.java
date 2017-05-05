@@ -33,8 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Me.addFriend("John", "Doe", false, "asdf");
-                Me.addMessage("asdf", "help", false);
                 //Code for packing the 'User' object, and sending it to the next activity
                 //      User block of code any time you need to send the 'User' to a new screen
                 Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);

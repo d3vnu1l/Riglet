@@ -133,8 +133,7 @@ public class User implements Parcelable{
     //note this is terribly inefficient, hashmap would be better
     private int findFriendIndex(String uID){
         for (int i = 0; i < this.Friends.size(); i++) {
-            if (this.Friends.get(i).getUID().equals(uID)) {
-                //return this.Friends.get(i);
+            if ((this.Friends.get(i).getUID()).equals(uID)) {
                 return i;
             }
         }

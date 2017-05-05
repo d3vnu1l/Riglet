@@ -67,6 +67,9 @@ public class SignupActivity extends AppCompatActivity {
                     else if(gen.toLowerCase().equals("f") || gen.toLowerCase().equals("female")) {
                         gender = false;
                         Me = new User(fn, ln, gender, uID);
+                        Me.addFriend("John", "Doe", false, "asdf");
+                        Me.addMessage("asdf", "help", false);
+                        Me.addMessage("asdf", "help", true);
                         Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);
                         i.setExtrasClassLoader(getClassLoader());
                         Bundle bundle = new Bundle();
