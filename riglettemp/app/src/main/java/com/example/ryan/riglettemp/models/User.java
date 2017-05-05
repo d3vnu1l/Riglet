@@ -112,6 +112,12 @@ public class User implements Parcelable{
         Friend_temp.editGender(gen);
         this.Friends.set(index, Friend_temp);
     }
+    public void editDisplayName(String uID, String newname){
+        int index = findFriendIndex(uID);
+        Friend Friend_temp = this.Friends.get(index);
+        Friend_temp.editDisplayName(newname);
+        this.Friends.set(index, Friend_temp);
+    }
 
     //Add/Remvoe functions
     public void removeFriend(String uID){

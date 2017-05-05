@@ -14,6 +14,7 @@ public class Friend implements Parcelable{
     private String lastName;
     private boolean gender;
     private String uID;
+    private String displayName;
     private ArrayList<Message> Messages;
 
     // 99.9% of the time you can just ignore this
@@ -53,11 +54,13 @@ public class Friend implements Parcelable{
         in.readList(this.Messages, Message.class.getClassLoader());
     }
 
+    //CONSTRUCTORS
     public Friend(){
         this.firstName = "";
         this.lastName = "";
         this.gender = false;
         this.uID = "placeholderUID";
+        this.displayName = "";
         this.Messages = new ArrayList<>();
     }
 
@@ -66,6 +69,7 @@ public class Friend implements Parcelable{
         this.lastName = lastName;
         this.gender = gender;
         this.uID = uID;
+        this.displayName = firstName + " " + lastName;
         this.Messages = new ArrayList<>();
     }
 
@@ -79,6 +83,9 @@ public class Friend implements Parcelable{
     public void editFirstName(String fn){ this.firstName = fn; }
     public void editLastName(String ln){ this.firstName = ln; }
     public void editGender(boolean gen){ this.gender = gen; }
+    public void editDisplayName(String newname){
+        this.displayName=newname;
+    }
 
     public void addMessage(Message Message_temp){ this.Messages.add(Message_temp); }
 }
