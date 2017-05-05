@@ -46,7 +46,6 @@ public class SignupActivity extends AppCompatActivity {
                 String repass = reEnter_pass.getText().toString().trim();
                 String uID = enter_id.getText().toString().trim();
                 String gen = enter_gender.getText().toString().trim();
-                boolean gender;
 
                 //check for all fields entry
                 if (fn.equals("") || ln.equals("") || dOB.equals("") || pass.equals("") || repass.equals("") || gen.equals("") || uID.equals("")) {
@@ -55,8 +54,11 @@ public class SignupActivity extends AppCompatActivity {
                 //need to check that uid is unique here
                 else if (pass.equals(repass)){
                     if (gen.toLowerCase().equals("m") || gen.toLowerCase().equals("male")) {
-                        gender = true;
-                        Me = new User(fn, ln, gender, uID);
+                        Me = new User(fn, ln, true, uID);
+
+                        Me.addFriend("Sample", "Friend", false, "asdf");
+                        Me.addMessage("", "help", false);
+
                         Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);
                         i.setExtrasClassLoader(getClassLoader());
                         Bundle bundle = new Bundle();
@@ -65,11 +67,11 @@ public class SignupActivity extends AppCompatActivity {
                         startActivity(i);
                     }
                     else if(gen.toLowerCase().equals("f") || gen.toLowerCase().equals("female")) {
-                        gender = false;
-                        Me = new User(fn, ln, gender, uID);
+                        Me = new User(fn, ln, true, uID);
+
                         Me.addFriend("John", "Doe", false, "asdf");
                         Me.addMessage("asdf", "help", false);
-                        Me.addMessage("asdf", "help", true);
+                        
                         Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);
                         i.setExtrasClassLoader(getClassLoader());
                         Bundle bundle = new Bundle();

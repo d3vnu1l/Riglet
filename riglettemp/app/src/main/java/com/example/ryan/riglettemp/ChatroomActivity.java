@@ -72,7 +72,7 @@ public class ChatroomActivity extends AppCompatActivity {
                     Toast.makeText(ChatroomActivity.this, "Please input some text...", Toast.LENGTH_SHORT).show();
                 } else {
                     //add message to list
-                    Me.addMessage("asdf", messageInput.getText().toString(), true);
+                    Me.addMessage("radeushane", messageInput.getText().toString(), true);
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
                 }

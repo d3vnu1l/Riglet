@@ -16,5 +16,7 @@ public class ForgotpassActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forgotpass_activity);
 
         enter_email = (EditText) findViewById(R.id.enter_email);
+
+        //NEED SEND EMAIL FUNCTION HERE
     }
 }
