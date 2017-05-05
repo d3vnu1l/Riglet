@@ -73,11 +73,6 @@ public class ChatroomActivity extends AppCompatActivity {
                 } else {
                     //add message to list
                     Me.addMessage("radeushane", messageInput.getText().toString(), true);
-                    ArrayList<Message> temp = Me.getMessages("radeushane");
-                    for(int i=0; i<temp.size(); i++) {
-                        Message tempmes = temp.get(i);
-                        Log.d("messagse", String.valueOf(tempmes.getIsme()));
-                    }
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
                 }
