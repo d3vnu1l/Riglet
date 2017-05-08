@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.ryan.riglettemp.models.User;
 
@@ -33,20 +34,20 @@ public class EditFriendsActivity extends AppCompatActivity {
 
         Intent h = getIntent();
         Bundle oldBundle_h = h.getBundleExtra("bundle_h");
-        friend = oldBundle_h.getParcelable("Friend");
+        //friend = oldBundle_h.getParcelable("Friend");
         h.setExtrasClassLoader(getClassLoader());
 
         EditFriendSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                friend.editDisplayName(EditFriendDisplayName.getText().toString());
+                //friend.editDisplayName(EditFriendDisplayName.getText().toString());
             }
         });
 
         EditFriendDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Me.removeFriend(friend.getUID());
+                //Me.removeFriend(friend.getUID());
             }
         });
 

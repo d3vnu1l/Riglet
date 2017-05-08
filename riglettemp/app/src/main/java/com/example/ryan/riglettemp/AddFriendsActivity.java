@@ -1,8 +1,14 @@
 package com.example.ryan.riglettemp;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.ryan.riglettemp.models.User;
 
 public class AddFriendsActivity extends AppCompatActivity {
     private Button home;
@@ -29,16 +35,17 @@ public class AddFriendsActivity extends AppCompatActivity {
         Bundle oldBundle = i.getBundleExtra("bundle");
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
-
+/*
         en_firstName = (EditText) findViewById(R.id.AddFriendFirstName);
         en_lastName = (EditText) findViewById(R.id.AddFreindLastName)
         en_gender = (EditText) findViewById(R.id.AddFriendGender)
         en_uID = (EditText) findViewById(R.id.AddFriendUniqueID)
-
+*/
         AddFriendAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                /*
                 String fistName = en_firstName.getText().toString().trim();
                 String lastName = en_lastName.getText().toString().trim();
                 String gender = en_gender.getText().toString().trim();
@@ -46,14 +53,15 @@ public class AddFriendsActivity extends AppCompatActivity {
 
                 if (gen.toLowerCase().equals("m") || gen.toLowerCase().equals("male")) {
                     Me.addFriend(fn, ln, true, uID);
-                    Toast.makeText(SignupActivity.this, "Friend Added!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddFriendsActivity.this, "Friend Added!", Toast.LENGTH_SHORT).show();
                 }
                 else if (gen.toLowerCase().equals("f") || gen.toLowerCase().equals("female")) {
                     Me.addFriend(fn, ln, false, uID);
-                    Toast.makeText(SignupActivity.this, "Friend Added!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddFriendsActivity.this, "Friend Added!", Toast.LENGTH_SHORT).show();
                 }
                 else
-                    Toast.makeText(SignupActivity.this, "Invalid gender", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddFriendsActivity.this, "Invalid gender", Toast.LENGTH_SHORT).show();
+                */
             }
         });
 

@@ -5,6 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
+
+import com.example.ryan.riglettemp.models.Friend;
+import com.example.ryan.riglettemp.models.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FriendsListActivity extends AppCompatActivity {
     private Button home;
@@ -27,11 +34,11 @@ public class FriendsListActivity extends AppCompatActivity {
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
 
-        ArrayList<Friend> myFriendList = me.getFriends();
+        ArrayList<Friend> myFriendList = Me.getFriends();
         ListView listview = (ListView) findViewById(R.id.FriendsListView);
 
-        for (int i = 0; i < this.Friends.size(); i++) {
-            listview
+        for (int ij = 0; ij < this.Friends.size(); ij++) {
+            //listview
         }
 
 
