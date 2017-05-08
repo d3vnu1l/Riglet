@@ -51,7 +51,7 @@
             android:background="@drawable/home"></Button>
 
         <Button
-            android:id="@+id/FrindsList"
+            android:id="@+id/FriendsList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/friends_group"

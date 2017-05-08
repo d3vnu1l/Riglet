@@ -42,11 +42,11 @@ public class FriendsListActivity extends AppCompatActivity {
         }
 
 
-        home = (Button) findViewById(R.id.home);
-        friendsList = (Button) findViewById(R.id.friendsList);
-        addFriend = (Button) findViewById(R.id.addFriend);
-        settings = (Button) findViewById(R.id.settings);
-        logOut = (Button) findViewById(R.id.logOut);
+        home = (Button) findViewById(R.id.Home);
+        friendsList = (Button) findViewById(R.id.FriendsList);
+        addFriend = (Button) findViewById(R.id.AddFriend);
+        settings = (Button) findViewById(R.id.Settings);
+        logOut = (Button) findViewById(R.id.LogOut);
 
         //Tab Bar
         home.setOnClickListener(new View.OnClickListener() {
