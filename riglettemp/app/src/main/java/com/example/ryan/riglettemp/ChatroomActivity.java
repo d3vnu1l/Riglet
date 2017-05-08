@@ -31,6 +31,8 @@ public class ChatroomActivity extends AppCompatActivity {
     private List<Message> Messages;
     private ArrayAdapter<Message> adapter;
     private User Me;
+    private boolean hasMessages = false;
+    private String friendID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class ChatroomActivity extends AppCompatActivity {
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
 
-
+        friendID = "asdf";
 
         /*
         //XML items
@@ -57,28 +59,37 @@ public class ChatroomActivity extends AppCompatActivity {
         btnSend = findViewById(R.id.btn_chat_send);
         messageInput = (EditText) findViewById(R.id.msg_type);
 
-        //listview adapter
-        adapter = new ChatAdapter(this, Me.getMessages("asdf"));
+        //chatadapter
+        adapter = new ChatAdapter(this, Me.getMessages(friendID));
         listView = (ListView) findViewById(R.id.list_msg);
-        listView.setAdapter(adapter);
 
-        //1. need to populate messages here after receiving user ID
+        //check if there are any messages to display
+        if (Me.getMessagesSize(friendID) == 0) {
+            Toast.makeText(ChatroomActivity.this, "No messages to display", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            hasMessages = true;
+            listView.setAdapter(adapter);
+        }
 
         //send event
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!hasMessages) {
+                    hasMessages = true;
+                    listView.setAdapter(adapter);   //sets up adapter after a messages is added
+                }
                 if (messageInput.getText().toString().trim().equals("")) {
                     Toast.makeText(ChatroomActivity.this, "Please input some text...", Toast.LENGTH_SHORT).show();
                 } else {
                     //add message to list
-                    Me.addMessage("radeushane", messageInput.getText().toString(), true);
+                    Me.addMessage(friendID, messageInput.getText().toString(), true);
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
                 }
             }
         });
-
 
     }
 }

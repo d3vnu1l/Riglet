@@ -135,6 +135,15 @@ public class User implements Parcelable{
         Friend_temp.addMessage(Message_temp);
         this.Friends.set(index, Friend_temp);
     }
+
+    public int getMessagesSize(String uID){
+        return this.Friends.get(findFriendIndex(uID)).getMessages().size();
+    }
+
+    public int getFriendsSize(){
+        return this.Friends.size();
+    }
+
     //Find function (INTERNAL use only)
     //note this is terribly inefficient, hashmap would be better
     private int findFriendIndex(String uID){
