@@ -53,10 +53,7 @@ public class SignupActivity extends AppCompatActivity {
                     if (gen.toLowerCase().equals("m") || gen.toLowerCase().equals("male")) {
                         Me = new User(fn, ln, true, uID);
 
-                        //Me.addFriend("Sample", "Friend", false, "asdf");
-                        //Me.addMessage("", "help", false);
-
-                        Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);
+                        Intent i = new Intent(getApplicationContext(), HomeActivity.class);
                         i.setExtrasClassLoader(getClassLoader());
                         Bundle bundle = new Bundle();
                         bundle.putParcelable("User", Me);
@@ -64,10 +61,7 @@ public class SignupActivity extends AppCompatActivity {
                         startActivity(i);
                     }
                     else if(gen.toLowerCase().equals("f") || gen.toLowerCase().equals("female")) {
-                        Me = new User(fn, ln, true, uID);
-
-                        //Me.addFriend("John", "Doe", false, "asdf");
-                        //Me.addMessage("asdf", "help", false);
+                        Me = new User(fn, ln, false, uID);
                         
                         Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);
                         i.setExtrasClassLoader(getClassLoader());
