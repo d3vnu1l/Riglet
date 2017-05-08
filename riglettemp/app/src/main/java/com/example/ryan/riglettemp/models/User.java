@@ -85,6 +85,9 @@ public class User implements Parcelable{
     public boolean getGender(String uID){
         return this.Friends.get(findFriendIndex(uID)).getGender();
     }
+    public String getDisplayName(String uID){
+        return this.Friends.get(findFriendIndex(uID)).getDisplayName();
+    }
     public ArrayList<Message> getMessages(String uID){
         return (this.Friends.get(findFriendIndex(uID))).getMessages();
     }

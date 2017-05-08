@@ -3,18 +3,28 @@ package com.example.ryan.riglettemp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.ryan.riglettemp.models.ChatAdapter;
+import com.example.ryan.riglettemp.models.Friend;
+import com.example.ryan.riglettemp.models.RecentAdapter;
 import com.example.ryan.riglettemp.models.User;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private Button home;
     private Button friendsList;
     private Button addFriend;
     private Button settings;
     private Button logOut;
     private User Me;
+
+    private boolean hasFriends = false;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +37,27 @@ public class HomeActivity extends AppCompatActivity {
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
 
+        /*
         home = (Button) findViewById(R.id.home);
         friendsList = (Button) findViewById(R.id.friendsList);
         addFriend = (Button) findViewById(R.id.addFriend);
         settings = (Button) findViewById(R.id.settings);
         logOut = (Button) findViewById(R.id.logOut);
+        */
 
+        listView = (ListView) findViewById(R.id.list_recent);
+        RecentAdapter adapter = new RecentAdapter(this, Me.getFriends());
+
+        //check if there are any recents to display
+        if (Me.getFriendsSize() == 0) {
+            Toast.makeText(HomeActivity.this, "No conversations to display", Toast.LENGTH_SHORT).show();
+        } else {
+            hasFriends = true;
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(this);
+        }
+
+        /*
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,5 +113,20 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        */
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String uID = Me.getFriends().get(position).getUID();
+
+        Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);
+        i.setExtrasClassLoader(getClassLoader());
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("User", Me);
+        i.putExtra("bundle",bundle);
+        i.putExtra("uID", uID);
+        startActivity(i);
+
     }
 }

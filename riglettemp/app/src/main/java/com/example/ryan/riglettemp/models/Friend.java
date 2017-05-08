@@ -30,6 +30,7 @@ public class Friend implements Parcelable{
         out.writeString(lastName);
         out.writeValue(gender);
         out.writeString(uID);
+        out.writeString(displayName);
         out.writeList(Messages);
     }
 
@@ -50,6 +51,7 @@ public class Friend implements Parcelable{
         this.lastName = in.readString();
         this.gender = (boolean)in.readValue( null );
         this.uID = in.readString();
+        this.displayName=in.readString();
         this.Messages = new ArrayList<Message>();
         in.readList(this.Messages, Message.class.getClassLoader());
     }
@@ -77,6 +79,7 @@ public class Friend implements Parcelable{
     public String getLastName(){ return lastName;}
     public boolean getGender(){ return gender;}
     public String getUID() { return uID; }
+    public String getDisplayName(){ return this.displayName; }
     public ArrayList<Message> getMessages(){ return Messages;}
 
 

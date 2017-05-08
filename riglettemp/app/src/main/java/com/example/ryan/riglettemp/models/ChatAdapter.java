@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChatAdapter extends ArrayAdapter<Message> {
-    // View lookup cache
     ArrayList<Message> list;
     private Context context;
 

@@ -44,8 +44,9 @@ public class ChatroomActivity extends AppCompatActivity {
         Bundle oldBundle = i.getBundleExtra("bundle");
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
+        final String friendID = getIntent().getExtras().getString("uID","defaultKey");
 
-        friendID = "asdf";
+        //friendID = "asdf";
 
         /*
         //XML items
