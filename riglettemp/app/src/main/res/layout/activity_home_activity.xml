@@ -6,23 +6,95 @@
     android:orientation="vertical" >
 
 
-    <RelativeLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="20dp">
 
-        <ListView
-            android:id="@+id/list_recent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="10dp"
-            android:listSelector="@android:color/transparent"
-            android:transcriptMode="alwaysScroll"
-            android:divider="@null" />
-    </RelativeLayout>
+
+    <ListView
+        android:layout_weight="90"
+        android:id="@+id/list_recent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:listSelector="@android:color/transparent"
+        android:transcriptMode="alwaysScroll"
+        android:divider="@null" />
+
+    <LinearLayout
+        android:layout_weight="10"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="#28731D"
+        android:layout_height="0dp">
+
+
+        <Button
+            android:id="@+id/Home"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp"
+            android:layout_weight="1"
+            android:textColor="#00FF00"
+            android:background="@drawable/home"></Button>
+
+        <Button
+            android:id="@+id/FrindsList"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/friends_group"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+        <Button
+            android:id="@+id/AddFriend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/add_friend">
+
+        </Button>
+
+        <Button
+            android:id="@+id/Settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/settings"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+        <Button
+            android:id="@+id/LogOut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logout"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:layout_marginTop="7dp">
+        </Button>
+
+    </LinearLayout>
 </LinearLayout>
