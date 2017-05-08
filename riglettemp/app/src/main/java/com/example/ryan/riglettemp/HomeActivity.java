@@ -74,12 +74,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-                i.setExtrasClassLoader(getClassLoader());
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("User", Me);
-                i.putExtra("bundle",bundle);
-                startActivity(i);
+
             }
         });
         friendsList.setOnClickListener(new View.OnClickListener() {

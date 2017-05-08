@@ -35,11 +35,11 @@ public class FriendsListActivity extends AppCompatActivity {
         i.setExtrasClassLoader(getClassLoader());
 
         ArrayList<Friend> myFriendList = Me.getFriends();
-        ListView listview = (ListView) findViewById(R.id.FriendsListView);
+        //ListView listview = (ListView) findViewById(R.id.FriendsListView);
 
-        for (int ij = 0; ij < this.Friends.size(); ij++) {
+        //for (int ij = 0; ij < this.Friends.size(); ij++) {
             //listview
-        }
+        //}
 
 
         home = (Button) findViewById(R.id.Home);

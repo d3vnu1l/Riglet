@@ -31,23 +31,21 @@ public class EditFriendsActivity extends AppCompatActivity {
         Bundle oldBundle = i.getBundleExtra("bundle");
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
-
-        Intent h = getIntent();
-        Bundle oldBundle_h = h.getBundleExtra("bundle_h");
-        //friend = oldBundle_h.getParcelable("Friend");
-        h.setExtrasClassLoader(getClassLoader());
+        //retreive uID from intent
+        final String friendID = getIntent().getExtras().getString("uID","defaultKey");
 
         EditFriendSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //friend.editDisplayName(EditFriendDisplayName.getText().toString());
+                Me.editDisplayName(friendID, EditFriendDisplayName.getText().toString());
+
             }
         });
 
         EditFriendDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Me.removeFriend(friend.getUID());
+                Me.removeFriend(friendID);
             }
         });
 
