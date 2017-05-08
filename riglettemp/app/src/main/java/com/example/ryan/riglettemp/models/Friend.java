@@ -81,6 +81,9 @@ public class Friend implements Parcelable{
     public String getUID() { return uID; }
     public String getDisplayName(){ return this.displayName; }
     public ArrayList<Message> getMessages(){ return Messages;}
+    public int getMessagesSize(){
+        return Messages.size();
+    }
 
 
     public void editFirstName(String fn){ this.firstName = fn; }

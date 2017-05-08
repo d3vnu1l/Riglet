@@ -15,6 +15,8 @@ import com.example.ryan.riglettemp.models.Friend;
 import com.example.ryan.riglettemp.models.RecentAdapter;
 import com.example.ryan.riglettemp.models.User;
 
+import java.util.ArrayList;
+
 public class HomeActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private Button home;
     private Button friendsList;
@@ -22,7 +24,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     private Button settings;
     private Button logOut;
     private User Me;
-
+    private ArrayList<Friend> friends;
     private boolean hasFriends = false;
     private ListView listView;
 
@@ -46,15 +48,29 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         */
 
         listView = (ListView) findViewById(R.id.list_recent);
-        RecentAdapter adapter = new RecentAdapter(this, Me.getFriends());
+
 
         //check if there are any recents to display
         if (Me.getFriendsSize() == 0) {
-            Toast.makeText(HomeActivity.this, "No conversations to display", Toast.LENGTH_SHORT).show();
+            Toast.makeText(HomeActivity.this, "You have not added any friends", Toast.LENGTH_SHORT).show();
         } else {
-            hasFriends = true;
-            listView.setAdapter(adapter);
-            listView.setOnItemClickListener(this);
+
+
+            //remove friends with no conversations
+            friends = Me.getFriends();
+            for(int j=0; j<friends.size(); j++){
+                if (friends.get(j).getMessagesSize()==0)
+                    friends.remove(j--);
+            }
+            if(friends.size()!=0) {
+                hasFriends = true;
+                RecentAdapter adapter = new RecentAdapter(this, friends);
+                listView.setAdapter(adapter);
+                listView.setOnItemClickListener(this);
+            }
+            else{
+                Toast.makeText(HomeActivity.this, "You have no conversations to display", Toast.LENGTH_SHORT).show();
+            }
         }
 
         /*

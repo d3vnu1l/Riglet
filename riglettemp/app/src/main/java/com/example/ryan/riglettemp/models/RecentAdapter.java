@@ -55,6 +55,7 @@ public class RecentAdapter extends ArrayAdapter<Friend> {
         } else {
             holder.imageView.setImageResource(R.drawable.person_female);
         }
+
         return convertView;
     }
 }
