@@ -16,6 +16,10 @@ public class EditFriendsActivity extends AppCompatActivity {
     private Button logOut;
     private User Me;
 
+    private Button EditFriendSave;
+    private Button EditFriendDelete;
+    private EditText EditFriendDisplayName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,25 @@ public class EditFriendsActivity extends AppCompatActivity {
         Bundle oldBundle = i.getBundleExtra("bundle");
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
+
+        Intent h = getIntent();
+        Bundle oldBundle_h = h.getBundleExtra("bundle_h");
+        friend = oldBundle_h.getParcelable("Friend");
+        h.setExtrasClassLoader(getClassLoader());
+
+        EditFriendSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                friend.editDisplayName(EditFriendDisplayName.getText().toString());
+            }
+        });
+
+        EditFriendDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Me.removeFriend(friend.getUID());
+            }
+        });
 
         home = (Button) findViewById(R.id.home);
         friendsList = (Button) findViewById(R.id.friendsList);

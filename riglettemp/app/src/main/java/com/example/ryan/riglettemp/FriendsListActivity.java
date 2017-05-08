@@ -12,100 +12,90 @@ public class FriendsListActivity extends AppCompatActivity {
     private Button addFriend;
     private Button settings;
     private Button logOut;
-    private Button editFriend_1;
-    private Button editFriend_2;
-    private Button editFriend_3;
-    private Button editFriend_4;
-    private Button editFriend_5;
-    private Button editFriend_6;
+    private List Friends;
+    private Friend friend;
+    private User Me;
 
-    /*
-    private EditText DisplayName1;
-    private EditText DisplayName2;
-    private EditText DisplayName3;
-    private EditText DisplayName4;
-    private EditText DisplayName5;
-    private EditText DisplayName6;
-*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends_list);
 
-        editFriend_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EditFriendsActivity.class);
-                i.setExtrasClassLoader(getClassLoader());
-                Bundle bundle = new Bundle();
-                //bundle.putParcelable(DisplayName1);
-                startActivity(i);
-            }
-        });
+        Intent i = getIntent();
+        Bundle oldBundle = i.getBundleExtra("bundle");
+        Me = oldBundle.getParcelable("User");
+        i.setExtrasClassLoader(getClassLoader());
 
-        editFriend_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EditFriendsActivity.class);
-                i.setExtrasClassLoader(getClassLoader());
-                Bundle bundle = new Bundle();
-                //bundle.putParcelable(DisplayName2);
-                startActivity(i);
-            }
-        });
+        ArrayList<Friend> myFriendList = me.getFriends();
+        ListView listview = (ListView) findViewById(R.id.FriendsListView);
 
-        editFriend_3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EditFriendsActivity.class);
-                i.setExtrasClassLoader(getClassLoader());
-                Bundle bundle = new Bundle();
-                //bundle.putParcelable(DisplayName3);
-                startActivity(i);
-            }
-        });
+        for (int i = 0; i < this.Friends.size(); i++) {
+            listview
+        }
 
-        editFriend_4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EditFriendsActivity.class);
-                i.setExtrasClassLoader(getClassLoader());
-                Bundle bundle = new Bundle();
-               // bundle.putParcelable(DisplayName4);
-                startActivity(i);
-            }
-        });
 
-        editFriend_5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EditFriendsActivity.class);
-                i.setExtrasClassLoader(getClassLoader());
-                Bundle bundle = new Bundle();
-                //bundle.putParcelable(DisplayName5);
-                startActivity(i);
-            }
-        });
-
-        editFriend_6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), EditFriendsActivity.class);
-                i.setExtrasClassLoader(getClassLoader());
-                Bundle bundle = new Bundle();
-               // bundle.putParcelable(DisplayName6);
-                startActivity(i);
-            }
-        });
-
-        /*
-        //XML items
         home = (Button) findViewById(R.id.home);
         friendsList = (Button) findViewById(R.id.friendsList);
         addFriend = (Button) findViewById(R.id.addFriend);
         settings = (Button) findViewById(R.id.settings);
         logOut = (Button) findViewById(R.id.logOut);
-        */
+
+        //Tab Bar
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
+            }
+        });
+        friendsList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FriendsListActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
+            }
+        });
+        addFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), AddFriendsActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
+            }
+        });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
+            }
+        });
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
+            }
+        });
     }
 }
