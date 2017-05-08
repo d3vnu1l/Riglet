@@ -38,11 +38,11 @@ public class LoginActivity extends AppCompatActivity {
                 Me.addFriend("John", "Doe", true, "asdsdfg3345f");
                 Me.addFriend("Steve", "Jobs", false, "asdhsfgerghsdfhsfg");
                 Me.addFriend("John", "Cena", false, "aasdfasgf3456g");
-                //Me.addMessage("asdsdfg3345f", "test", false);
-                //Me.addMessage("asdsdfg3345f", "test", true);
-                //Me.addMessage("aasdfasgf3456g", "test", false);
-                //Me.addMessage("aasdfasgf3456g", "test", true);
-                //Me.addMessage("aasdfasgf3456g", "test", false);
+                Me.addMessage("asdsdfg3345f", "test", false);
+                Me.addMessage("asdsdfg3345f", "test", true);
+                Me.addMessage("aasdfasgf3456g", "test", false);
+                Me.addMessage("aasdfasgf3456g", "test", true);
+                Me.addMessage("aasdfasgf3456g", "test", false);
 
                 //Code for packing the 'User' object, and sending it to the next activity
                 //      User block of code any time you need to send the 'User' to a new screen

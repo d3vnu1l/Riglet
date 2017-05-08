@@ -91,6 +91,9 @@ public class User implements Parcelable{
     public ArrayList<Message> getMessages(String uID){
         return (this.Friends.get(findFriendIndex(uID))).getMessages();
     }
+    public String getRoomKey(String uID){
+        return this.Friends.get(findFriendIndex(uID)).getRoomkey();
+    }
 
     //Edit functions
     public void editFirstName(String fn){ this.firstName = fn; }
@@ -121,8 +124,14 @@ public class User implements Parcelable{
         Friend_temp.editDisplayName(newname);
         this.Friends.set(index, Friend_temp);
     }
+    public void editRoomKey(String uID, String roomKey){
+        int index = findFriendIndex(uID);
+        Friend Friend_temp = this.Friends.get(index);
+        Friend_temp.editRoomKey(roomKey);
+        this.Friends.set(index, Friend_temp);
+    }
 
-    //Add/Remvoe functions
+    //Add/Remove functions
     public void removeFriend(String uID){
         int index = findFriendIndex(uID);
         this.Friends.remove(index);
