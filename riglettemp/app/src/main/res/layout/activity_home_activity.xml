@@ -31,7 +31,7 @@
 
 
         <Button
-            android:id="@+id/Home"
+            android:id="@+id/home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -44,7 +44,7 @@
             android:background="@drawable/home"></Button>
 
         <Button
-            android:id="@+id/FrindsList"
+            android:id="@+id/friendsList"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/friends_group"
@@ -57,7 +57,7 @@
         </Button>
 
         <Button
-            android:id="@+id/AddFriend"
+            android:id="@+id/addFriend"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -71,7 +71,7 @@
         </Button>
 
         <Button
-            android:id="@+id/Settings"
+            android:id="@+id/settings"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/settings"
@@ -84,7 +84,7 @@
         </Button>
 
         <Button
-            android:id="@+id/LogOut"
+            android:id="@+id/logOut"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@drawable/logout"

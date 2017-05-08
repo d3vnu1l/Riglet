@@ -39,18 +39,15 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
 
-        /*
+
         home = (Button) findViewById(R.id.home);
         friendsList = (Button) findViewById(R.id.friendsList);
         addFriend = (Button) findViewById(R.id.addFriend);
         settings = (Button) findViewById(R.id.settings);
         logOut = (Button) findViewById(R.id.logOut);
-        */
 
         listView = (ListView) findViewById(R.id.list_recent);
 
-
-        //check if there are any recents to display
         if (Me.getFriendsSize() == 0) {
             Toast.makeText(HomeActivity.this, "You have not added any friends", Toast.LENGTH_SHORT).show();
         } else {
@@ -73,7 +70,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         }
 
-        /*
+
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,7 +126,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
                 startActivity(i);
             }
         });
-        */
+
     }
 
     @Override
