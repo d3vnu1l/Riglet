@@ -60,9 +60,6 @@ public class SettingsActivity extends AppCompatActivity {
                 String Password = SettingsPassword.getText().toString().trim();
                 String Gender = SettingsGender.getText().toString().trim();
 
-                String uID = "reee";
-
-                //String uID = getUserID().toString().trim(); //Need to implement getUserID command from backend
                 //check for all fields entry
                 if (FirstName.equals("") || LastName.equals("") || Password.equals("") || Gender.equals(""))
                 {
@@ -71,14 +68,23 @@ public class SettingsActivity extends AppCompatActivity {
                 //need to check that uid is unique here
                 else
                 {
-                    if (Gender.toLowerCase().equals("m") || Gender.toLowerCase().equals("male") || Gender.toLowerCase().equals("female") || Gender.toLowerCase().equals("f"))
-                        Me = new User(FirstName, LastName, false, uID);
+                    if (Gender.toLowerCase().equals("m") || Gender.toLowerCase().equals("male")) {
+                        Me.editFirstName(FirstName);
+                        Me.editLastName(LastName);
+                        //Me.editPassword(Password);
+                        Me.editGender(true);
+                        Toast.makeText(SettingsActivity.this, "Settings saved", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(Gender.toLowerCase().equals("f") || Gender.toLowerCase().equals("female")){
+                        Me.editFirstName(FirstName);
+                        Me.editLastName(LastName);
+                        //Me.editPassword(Password);
+                        Me.editGender(false);
+                        Toast.makeText(SettingsActivity.this, "Settings saved", Toast.LENGTH_SHORT).show();
+                    }
                     else
                         Toast.makeText(SettingsActivity.this, "Invalid gender", Toast.LENGTH_SHORT).show();
                 }
-
-                //Make edits here
-                Me.editFirstName(FirstName);
             }
         });
         SettingsDiscardChanges.setOnClickListener(new View.OnClickListener() {
