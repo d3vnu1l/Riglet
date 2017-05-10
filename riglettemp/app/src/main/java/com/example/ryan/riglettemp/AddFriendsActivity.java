@@ -35,12 +35,23 @@ public class AddFriendsActivity extends AppCompatActivity {
         Bundle oldBundle = i.getBundleExtra("bundle");
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
+
+        home = (Button) findViewById(R.id.home);
+        friendsList = (Button) findViewById(R.id.friendsList);
+        addFriend = (Button) findViewById(R.id.addFriend);
+        settings = (Button) findViewById(R.id.settings);
+        logOut = (Button) findViewById(R.id.logOut);
+
+        AddFriendAddFriend = (Button) findViewById(R.id.AddFriendAddFriend);
+        AddFriendDiscard = (Button) findViewById(R.id.AddFriendDiscard);
 /*
         en_firstName = (EditText) findViewById(R.id.AddFriendFirstName);
         en_lastName = (EditText) findViewById(R.id.AddFreindLastName)
         en_gender = (EditText) findViewById(R.id.AddFriendGender)
         en_uID = (EditText) findViewById(R.id.AddFriendUniqueID)
 */
+
+
         AddFriendAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,12 +86,6 @@ public class AddFriendsActivity extends AppCompatActivity {
             }
         });
 
-        home = (Button) findViewById(R.id.home);
-        friendsList = (Button) findViewById(R.id.friendsList);
-        addFriend = (Button) findViewById(R.id.addFriend);
-        settings = (Button) findViewById(R.id.settings);
-        logOut = (Button) findViewById(R.id.logOut);
-
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,12 +111,7 @@ public class AddFriendsActivity extends AppCompatActivity {
         addFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), AddFriendsActivity.class);
-                i.setExtrasClassLoader(getClassLoader());
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("User", Me);
-                i.putExtra("bundle",bundle);
-                startActivity(i);
+                //do nothing
             }
         });
         settings.setOnClickListener(new View.OnClickListener() {
