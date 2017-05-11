@@ -23,10 +23,18 @@
         android:orientation="vertical">
 
         <ListView
-            android:layout_weight="1"
-            android:id="@+id/phoneTypeListView"
+            android:layout_weight="90"
+            android:id="@+id/friendListView"
             android:layout_width="match_parent"
-            android:layout_height="0dp"></ListView>
+            android:layout_height="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:listSelector="@android:color/transparent"
+            android:transcriptMode="alwaysScroll"
+            android:divider="@null" />
 
     </LinearLayout>
 
@@ -48,7 +56,9 @@
             android:layout_marginRight="7dp"
             android:layout_marginTop="7dp"
             android:layout_weight="1"
-            android:background="@drawable/home"></Button>
+            android:background="@drawable/home">
+
+        </Button>
 
         <Button
             android:id="@+id/FriendsList"

@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
                 Me.addFriend("John", "Doe", true, "asdsdfg3345f");
                 Me.addFriend("Steve", "Jobs", false, "asdhsfgerghsdfhsfg");
                 Me.addFriend("John", "Cena", false, "aasdfasgf3456g");
+                Me.addFriend("Jn", "na", true, "aafasgf3456g");
                 Me.addMessage("asdsdfg3345f", "test", false);
                 Me.addMessage("asdsdfg3345f", "test", true);
                 Me.addMessage("aasdfasgf3456g", "test", false);

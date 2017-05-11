@@ -3,43 +3,40 @@ package com.example.ryan.riglettemp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.ryan.riglettemp.models.Friend;
+import com.example.ryan.riglettemp.models.FriendAdapter;
 import com.example.ryan.riglettemp.models.User;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class FriendsListActivity extends AppCompatActivity {
+public class FriendsListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
     private Button home;
     private Button friendsList;
     private Button addFriend;
     private Button settings;
     private Button logOut;
-    private List Friends;
-    private Friend friend;
     private User Me;
-
+    private ArrayList<Friend> friends;
+    private boolean hasFriends = false;
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends_list);
 
+        //get user object from parcelable
         Intent i = getIntent();
         Bundle oldBundle = i.getBundleExtra("bundle");
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
-
-        ArrayList<Friend> myFriendList = Me.getFriends();
-        //ListView listview = (ListView) findViewById(R.id.FriendsListView);
-
-        //for (int ij = 0; ij < this.Friends.size(); ij++) {
-            //listview
-        //}
 
 
         home = (Button) findViewById(R.id.Home);
@@ -48,7 +45,19 @@ public class FriendsListActivity extends AppCompatActivity {
         settings = (Button) findViewById(R.id.Settings);
         logOut = (Button) findViewById(R.id.LogOut);
 
-        //Tab Bar
+        listView = (ListView) findViewById(R.id.friendListView);
+
+        if (Me.getFriendsSize() == 0) {
+            Toast.makeText(FriendsListActivity.this, "You have not added any friends", Toast.LENGTH_SHORT).show();
+        } else {
+            //friends = Me.getFriends();
+            hasFriends = true;
+            FriendAdapter adapter = new FriendAdapter(this, Me.getFriends());
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(this);
+        }
+
+
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,12 +72,7 @@ public class FriendsListActivity extends AppCompatActivity {
         friendsList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), FriendsListActivity.class);
-                i.setExtrasClassLoader(getClassLoader());
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("User", Me);
-                i.putExtra("bundle",bundle);
-                startActivity(i);
+
             }
         });
         addFriend.setOnClickListener(new View.OnClickListener() {
@@ -104,5 +108,19 @@ public class FriendsListActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String uID = Me.getFriends().get(position).getUID();
+        Intent i = new Intent(getApplicationContext(), ChatroomActivity.class);
+        i.setExtrasClassLoader(getClassLoader());
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("User", Me);
+        i.putExtra("bundle",bundle);
+        i.putExtra("uID", uID);
+        startActivity(i);
+
     }
 }

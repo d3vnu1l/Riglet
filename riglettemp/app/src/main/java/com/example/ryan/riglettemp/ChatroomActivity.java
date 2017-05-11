@@ -48,14 +48,13 @@ public class ChatroomActivity extends AppCompatActivity {
 
         //friendID = "asdf";
 
-        /*
+
         //XML items
-        home = (Button) findViewById(R.id.home);
-        //friendsList = (Button) findViewById(R.id.friendsList);
-        //addFriend = (Button) findViewById(R.id.addFriend);
-        //settings = (Button) findViewById(R.id.settings);
-        //logOut = (Button) findViewById(R.id.logOut);
-        */
+        home = (Button) findViewById(R.id.Home);
+        friendsList = (Button) findViewById(R.id.FrindsList);
+        addFriend = (Button) findViewById(R.id.AddFriend);
+        settings = (Button) findViewById(R.id.Settings);
+        logOut = (Button) findViewById(R.id.LogOut);
 
         btnSend = findViewById(R.id.btn_chat_send);
         messageInput = (EditText) findViewById(R.id.msg_type);
@@ -89,6 +88,63 @@ public class ChatroomActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
                 }
+            }
+        });
+
+        //tab bar
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
+            }
+        });
+        friendsList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), FriendsListActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
+            }
+        });
+        addFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), AddFriendsActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
+            }
+        });
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
+            }
+        });
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
             }
         });
 

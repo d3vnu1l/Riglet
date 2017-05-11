@@ -94,6 +94,9 @@ public class User implements Parcelable{
     public String getRoomKey(String uID){
         return this.Friends.get(findFriendIndex(uID)).getRoomkey();
     }
+    public Friend getFriend(int index){
+        return this.Friends.get(index);
+    }
 
     //Edit functions
     public void editFirstName(String fn){ this.firstName = fn; }

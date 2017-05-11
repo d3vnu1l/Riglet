@@ -52,12 +52,11 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
             Toast.makeText(HomeActivity.this, "You have not added any friends", Toast.LENGTH_SHORT).show();
         } else {
 
-
+            friends = new ArrayList<Friend>();
             //remove friends with no conversations
-            friends = Me.getFriends();
-            for(int j=0; j<friends.size(); j++){
-                if (friends.get(j).getMessagesSize()==0)
-                    friends.remove(j--);
+            for(int j=0; j<Me.getFriends().size(); j++){
+                if (Me.getFriend(j).getMessagesSize()>0)
+                    friends.add(Me.getFriend(j));
             }
             if(friends.size()!=0) {
                 hasFriends = true;
