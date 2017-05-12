@@ -15,6 +15,7 @@ public class User implements Parcelable{
     private boolean gender;
     private String uID;
     private ArrayList<Friend> Friends;
+    private String email;
 
     ///*
     // 99.9% of the time you can just ignore this
@@ -31,6 +32,7 @@ public class User implements Parcelable{
         out.writeValue(gender);
         out.writeString(uID);
         out.writeList(Friends);
+        out.writeString(email);
     }
 
     // this is used to regenerate your object. All Parcelables must have a CREATOR that implements these two methods
@@ -51,6 +53,7 @@ public class User implements Parcelable{
         this.gender = (boolean)in.readValue( null );
         this.uID = in.readString();
         this.Friends = new ArrayList<Friend>();
+        this.email = in.readString();
         in.readList(this.Friends, Friend.class.getClassLoader());
     }
     //*/
@@ -60,6 +63,7 @@ public class User implements Parcelable{
         this.lastName = new String();
         this.gender = false;
         this.uID = "placeholderUID";
+        this.email = new String();
         this.Friends = new ArrayList<>();
     }
     public User(String firstName, String lastName, boolean gender, String uID){
@@ -68,6 +72,7 @@ public class User implements Parcelable{
         this.gender = gender;
         this.uID = uID;
         this.Friends = new ArrayList<>();
+        this.email = email;
     }
 
     //GET functions
