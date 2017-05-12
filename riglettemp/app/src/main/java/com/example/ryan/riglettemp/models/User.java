@@ -53,8 +53,9 @@ public class User implements Parcelable{
         this.gender = (boolean)in.readValue( null );
         this.uID = in.readString();
         this.Friends = new ArrayList<Friend>();
-        this.email = in.readString();
         in.readList(this.Friends, Friend.class.getClassLoader());
+        this.email = in.readString();
+
     }
     //*/
     //CONSTRUCTORS
@@ -63,7 +64,7 @@ public class User implements Parcelable{
         this.lastName = new String();
         this.gender = false;
         this.uID = "placeholderUID";
-        this.email = new String();
+        this.email = "holder";
         this.Friends = new ArrayList<>();
     }
     public User(String firstName, String lastName, boolean gender, String uID){
@@ -72,7 +73,7 @@ public class User implements Parcelable{
         this.gender = gender;
         this.uID = uID;
         this.Friends = new ArrayList<>();
-        this.email = email;
+        this.email = "holder";
     }
 
     //GET functions
