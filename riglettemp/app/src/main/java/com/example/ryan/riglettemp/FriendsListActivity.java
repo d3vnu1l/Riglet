@@ -16,7 +16,7 @@ import com.example.ryan.riglettemp.models.User;
 
 import java.util.ArrayList;
 
-public class FriendsListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
+public class FriendsListActivity extends AppCompatActivity implements AdapterView.OnItemClickListener, FriendAdapter.EditUserCallback {
     private Button home;
     private Button friendsList;
     private Button addFriend;
@@ -53,6 +53,7 @@ public class FriendsListActivity extends AppCompatActivity implements AdapterVie
             //friends = Me.getFriends();
             hasFriends = true;
             FriendAdapter adapter = new FriendAdapter(this, Me.getFriends());
+            adapter.setCallback(this);
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(this);
         }
@@ -121,6 +122,21 @@ public class FriendsListActivity extends AppCompatActivity implements AdapterVie
         i.putExtra("bundle",bundle);
         i.putExtra("uID", uID);
         startActivity(i);
+    }
 
+    @Override
+    public void gotoEdit(int position){
+        Log.d("", "test");
+        ArrayList<Friend> friendss;
+        friendss = Me.getFriends();
+        String uID = friendss.get(position).getUID();
+        Intent i = new Intent(getApplicationContext(), EditFriendsActivity.class);
+        i.setExtrasClassLoader(getClassLoader());
+        Bundle bundle = new Bundle();
+        bundle.putParcelable("User", Me);
+        i.putExtra("bundle",bundle);
+        i.putExtra("uID", uID);
+        startActivity(i);
     }
 }
+

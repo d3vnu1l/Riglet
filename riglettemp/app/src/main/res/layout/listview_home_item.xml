@@ -4,8 +4,8 @@
     android:layout_margin="5dp"
     android:padding="10dp"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
-    android:background="#FFFFFF">
+    android:layout_height="100dp">
+    <!--  android:background="#FFFFFF">  -->
 
     <ImageView
         android:adjustViewBounds="true"
@@ -20,7 +20,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
-        android:textColor="#000000"
         android:text="Friend's Name"
         android:layout_gravity="center"
         android:gravity="center"

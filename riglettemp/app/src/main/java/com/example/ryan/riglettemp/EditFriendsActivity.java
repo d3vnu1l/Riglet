@@ -34,6 +34,16 @@ public class EditFriendsActivity extends AppCompatActivity {
         //retreive uID from intent
         final String friendID = getIntent().getExtras().getString("uID","defaultKey");
 
+        home = (Button) findViewById(R.id.home);
+        friendsList = (Button) findViewById(R.id.friendsList);
+        addFriend = (Button) findViewById(R.id.addFriend);
+        settings = (Button) findViewById(R.id.settings);
+        logOut = (Button) findViewById(R.id.logOut);
+
+        EditFriendSave = (Button) findViewById(R.id.EditFriendSave);
+        EditFriendDelete = (Button) findViewById(R.id.EditFriendDelete);
+
+
         EditFriendSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,12 +58,6 @@ public class EditFriendsActivity extends AppCompatActivity {
                 Me.removeFriend(friendID);
             }
         });
-
-        home = (Button) findViewById(R.id.home);
-        friendsList = (Button) findViewById(R.id.friendsList);
-        addFriend = (Button) findViewById(R.id.addFriend);
-        settings = (Button) findViewById(R.id.settings);
-        logOut = (Button) findViewById(R.id.logOut);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
