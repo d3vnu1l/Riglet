@@ -16,14 +16,11 @@ public class AddFriendsActivity extends AppCompatActivity {
     private Button addFriend;
     private Button settings;
     private Button logOut;
+    private EditText en_uID;
     private User Me;
 
     private Button AddFriendDiscard;
     private Button AddFriendAddFriend;
-    private EditText AddFriendUniqueID;
-    private EditText AddFriendFirstName;
-    private EditText AddFriendLastName;
-    private EditText AddFriendGender;
 
 
     @Override
@@ -44,45 +41,33 @@ public class AddFriendsActivity extends AppCompatActivity {
 
         AddFriendAddFriend = (Button) findViewById(R.id.AddFriendAddFriend);
         AddFriendDiscard = (Button) findViewById(R.id.AddFriendDiscard);
-/*
-        en_firstName = (EditText) findViewById(R.id.AddFriendFirstName);
-        en_lastName = (EditText) findViewById(R.id.AddFreindLastName)
-        en_gender = (EditText) findViewById(R.id.AddFriendGender)
-        en_uID = (EditText) findViewById(R.id.AddFriendUniqueID)
-*/
+
+        en_uID = (EditText) findViewById(R.id.AddFriendUniqueID);
+
 
 
         AddFriendAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                /*
-                String fistName = en_firstName.getText().toString().trim();
-                String lastName = en_lastName.getText().toString().trim();
-                String gender = en_gender.getText().toString().trim();
+                String firstName = "Place", lastName = "Holder";
+                boolean gen = false;
                 String uID = en_uID.getText().toString().trim();
+                //Verify uID and get other fields here from firebase
 
-                if (gen.toLowerCase().equals("m") || gen.toLowerCase().equals("male")) {
-                    Me.addFriend(fn, ln, true, uID);
-                    Toast.makeText(AddFriendsActivity.this, "Friend Added!", Toast.LENGTH_SHORT).show();
+                if(uID.equals("")){
+                    Toast.makeText(AddFriendsActivity.this, "Enter a unique ID", Toast.LENGTH_SHORT).show();
                 }
-                else if (gen.toLowerCase().equals("f") || gen.toLowerCase().equals("female")) {
-                    Me.addFriend(fn, ln, false, uID);
-                    Toast.makeText(AddFriendsActivity.this, "Friend Added!", Toast.LENGTH_SHORT).show();
+                else {
+                    Me.addFriend(firstName, lastName, gen, uID);
                 }
-                else
-                    Toast.makeText(AddFriendsActivity.this, "Invalid gender", Toast.LENGTH_SHORT).show();
-                */
             }
         });
 
         AddFriendDiscard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddFriendFirstName.setText("");
-                AddFriendLastName.setText("");
-                AddFriendGender.setText("");
-                AddFriendUniqueID.setText("");
+                en_uID.setText("");
             }
         });
 
