@@ -1,5 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#28731D"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="Log in"
+        android:textSize="36sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:background="#36A128"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:src="@drawable/rigletlogo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:gravity="center"
+                android:text="Unique ID: "
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/enter_username"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="cursive"
+                android:gravity="center"
+                android:hint="Unique ID" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:gravity="center"
+                android:text="Password: "
+                android:textSize="24sp" />
+
+            <EditText
+                android:id="@+id/enter_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="cursive"
+                android:gravity="center"
+                android:hint="Password" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="7dp"
+                android:layout_weight="0.5"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="Sign up"
+                android:textSize="16dp"></Button>
+
+            <Button
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="7dp"
+                android:layout_weight="0.5"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="Log in"
+                android:textSize="16dp"></Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <Button
+                android:id="@+id/forgotpass_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="Forgot My Password or Unique ID"
+                android:textSize="16dp"></Button>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+
+
+    <!--
+    <?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#006400"
@@ -9,7 +160,6 @@
     android:layout_height="match_parent"
     tools:context="com.example.ryan.riglettemp.LoginActivity">
 
-    <!--
     <TextView
         android:id="@+id/LoginDisplay"
         android:layout_width="match_parent"
@@ -19,7 +169,7 @@
         android:textSize="50sp"
 
             />
-    -->
+
 
     <ImageView
         android:layout_weight="40"
@@ -99,6 +249,5 @@
             android:layout_gravity="center"
             android:text="Forgot Password ?"/>
         ></LinearLayout>
-</LinearLayout>
-
-
+    </LinearLayout>
+    -->
