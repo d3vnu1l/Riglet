@@ -1,55 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#006400"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.ryan.riglettemp.ForgotpassActivity">
-
-<TextView
-        android:id="@+id/resetDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:text="Unique ID Reminder Password Reset"
-        android:textSize="35sp"
-        android:layout_marginLeft="15dp"
-        />
+    android:layout_height="match_parent">
     <TextView
-        android:id="@+id/emailDisplay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Please Enter your e-mail"
-        android:textSize="25sp"
-        android:layout_marginLeft="25dp"
-        />
-    <EditText
-        android:id="@+id/enter_email"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:inputType="textEmailAddress"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#28731D"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="Credentials Retrieval"
+        android:textSize="36sp"/>
 
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        android:background="#36A128"
+        android:orientation="vertical">
 
-    ></LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="Please, enter your email address"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"></LinearLayout>
+            <EditText
+                android:id="@+id/enter_email"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:fontFamily="cursive"
+                android:gravity="center"
+                android:hint="E-mail address" />
+        </LinearLayout>
 
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5">
+            <Button
+                android:id="@+id/reset_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="7dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="7dp"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="Forgot My Password or Unique ID"
+                android:textSize="16dp"></Button>
 
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5">
+        </LinearLayout>
 
+    </LinearLayout>
 
-
-
-
-
-
-
-
-
-
+</LinearLayout>
