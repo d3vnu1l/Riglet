@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#006400"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
     tools:context="com.example.ryan.riglettemp.ChatroomActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fontFamily="casual"
+        android:background="#28731D"
+        android:gravity="center"
+        android:text="FRIEND'S NAME"
+        android:textSize="36sp" />
 
 
         <RelativeLayout
-            android:layout_weight="9"
+            android:layout_weight="6"
             android:id="@+id/container"
+            android:background="#36A128"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="vertical"
@@ -30,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:background="@color/background_floating_material_dark"
+                android:background="@color/colorAccent"
                 android:text="Send"
                 android:textColor="@color/background_material_light" />
 
