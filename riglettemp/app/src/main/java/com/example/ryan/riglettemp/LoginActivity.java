@@ -41,9 +41,11 @@ public class LoginActivity extends AppCompatActivity {
                 Me.addFriend("Jn", "na", true, "agf3456g");
                 Me.addFriend("fd", "asdf", true, "aafasgf36g");
                 Me.addFriend("khj", "df", true, "aaf6g");
-                Me.addMessage("asdsdfg3345f", "test", false);
-                Me.addMessage("asdsdfg3345f", "test", true);
-                Me.addMessage("ax3456g", "test", false);
+
+
+                Me.addMessage("aafasgf36g", "test", false);
+                Me.addMessage("ax3456g", "test", true);
+                Me.addMessage("asdhsfgerghsdfhsfg", "tehst", false);
                 Me.addMessage("ax3456g", "test", true);
                 Me.addMessage("aafasgf36g", "test", false);
                 Me.addMessage("ax3456g", "test", false);
