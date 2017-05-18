@@ -126,7 +126,6 @@ public class FriendsListActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void gotoEdit(int position){
-        Log.d("", "test");
         ArrayList<Friend> friendss;
         friendss = Me.getFriends();
         String uID = friendss.get(position).getUID();
@@ -137,6 +136,11 @@ public class FriendsListActivity extends AppCompatActivity implements AdapterVie
         i.putExtra("bundle",bundle);
         i.putExtra("uID", uID);
         startActivity(i);
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }
 

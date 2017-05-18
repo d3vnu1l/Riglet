@@ -68,9 +68,6 @@ public class FriendAdapter extends ArrayAdapter<Friend> {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(context, "Edit button Clicked",
-                        Toast.LENGTH_LONG).show();
                 callback.gotoEdit(position);
             }
         });

@@ -45,7 +45,6 @@ public class AddFriendsActivity extends AppCompatActivity {
         en_uID = (EditText) findViewById(R.id.AddFriendUniqueID);
 
 
-
         AddFriendAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,10 +54,9 @@ public class AddFriendsActivity extends AppCompatActivity {
                 String uID = en_uID.getText().toString().trim();
                 //Verify uID and get other fields here from firebase
 
-                if(uID.equals("")){
+                if (uID.equals("")) {
                     Toast.makeText(AddFriendsActivity.this, "Enter a unique ID", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Me.addFriend(firstName, lastName, gen, uID);
                 }
             }
@@ -78,7 +76,7 @@ public class AddFriendsActivity extends AppCompatActivity {
                 i.setExtrasClassLoader(getClassLoader());
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("User", Me);
-                i.putExtra("bundle",bundle);
+                i.putExtra("bundle", bundle);
                 startActivity(i);
             }
         });
@@ -89,7 +87,7 @@ public class AddFriendsActivity extends AppCompatActivity {
                 i.setExtrasClassLoader(getClassLoader());
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("User", Me);
-                i.putExtra("bundle",bundle);
+                i.putExtra("bundle", bundle);
                 startActivity(i);
             }
         });
@@ -106,7 +104,7 @@ public class AddFriendsActivity extends AppCompatActivity {
                 i.setExtrasClassLoader(getClassLoader());
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("User", Me);
-                i.putExtra("bundle",bundle);
+                i.putExtra("bundle", bundle);
                 startActivity(i);
             }
         });
@@ -117,9 +115,13 @@ public class AddFriendsActivity extends AppCompatActivity {
                 i.setExtrasClassLoader(getClassLoader());
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("User", Me);
-                i.putExtra("bundle",bundle);
+                i.putExtra("bundle", bundle);
                 startActivity(i);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }

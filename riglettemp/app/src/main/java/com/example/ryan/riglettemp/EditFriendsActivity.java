@@ -114,6 +114,9 @@ public class EditFriendsActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+    }
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }

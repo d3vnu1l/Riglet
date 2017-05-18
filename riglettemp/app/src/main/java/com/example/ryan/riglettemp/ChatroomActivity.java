@@ -148,5 +148,11 @@ public class ChatroomActivity extends AppCompatActivity {
             }
         });
 
+
+
+    }
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 }
