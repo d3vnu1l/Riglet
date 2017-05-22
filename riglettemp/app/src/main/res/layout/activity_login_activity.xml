@@ -76,7 +76,8 @@
                 android:layout_height="match_parent"
                 android:fontFamily="cursive"
                 android:gravity="center"
-                android:hint="Password" />
+                android:hint="Password"
+                android:inputType="textPassword" />
 
         </LinearLayout>
 
