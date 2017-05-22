@@ -14,7 +14,7 @@
         android:background="#28731D"
         android:fontFamily="casual"
         android:gravity="center"
-        android:text="Sign up"
+        android:text="Home"
         android:textSize="36sp" />
     <LinearLayout
         android:layout_width="match_parent"

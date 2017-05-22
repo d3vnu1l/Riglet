@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ryan.riglettemp.models.ChatAdapter;
@@ -24,6 +25,8 @@ public class ChatroomActivity extends AppCompatActivity {
     private Button addFriend;
     private Button settings;
     private Button logOut;
+
+    private TextView FriendName;
 
     private ListView listView;
     private View btnSend;
@@ -46,8 +49,6 @@ public class ChatroomActivity extends AppCompatActivity {
         i.setExtrasClassLoader(getClassLoader());
         final String friendID = getIntent().getExtras().getString("uID","defaultKey");
 
-        //friendID = "asdf";
-
 
         //XML items
         home = (Button) findViewById(R.id.Home);
@@ -55,6 +56,10 @@ public class ChatroomActivity extends AppCompatActivity {
         addFriend = (Button) findViewById(R.id.AddFriend);
         settings = (Button) findViewById(R.id.Settings);
         logOut = (Button) findViewById(R.id.LogOut);
+
+        FriendName = (TextView) findViewById(R.id.FriendName);
+        FriendName.setText(Me.getDisplayName(friendID));
+
 
         btnSend = findViewById(R.id.btn_chat_send);
         messageInput = (EditText) findViewById(R.id.msg_type);

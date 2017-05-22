@@ -6,6 +6,7 @@
     tools:context="com.example.ryan.riglettemp.ChatroomActivity">
     <TextView
         android:layout_width="match_parent"
+        android:id="@+id/FriendName"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:fontFamily="casual"

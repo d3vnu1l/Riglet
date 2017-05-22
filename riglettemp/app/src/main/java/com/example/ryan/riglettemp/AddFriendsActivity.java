@@ -58,6 +58,7 @@ public class AddFriendsActivity extends AppCompatActivity {
                     Toast.makeText(AddFriendsActivity.this, "Enter a unique ID", Toast.LENGTH_SHORT).show();
                 } else {
                     Me.addFriend(firstName, lastName, gen, uID);
+                    Toast.makeText(AddFriendsActivity.this, "Friend Added", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -66,6 +67,7 @@ public class AddFriendsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 en_uID.setText("");
+                Toast.makeText(AddFriendsActivity.this, "Changes Discarded", Toast.LENGTH_SHORT).show();
             }
         });
 

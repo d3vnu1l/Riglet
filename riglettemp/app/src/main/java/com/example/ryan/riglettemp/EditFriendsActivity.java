@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.ryan.riglettemp.models.User;
 
@@ -34,6 +35,9 @@ public class EditFriendsActivity extends AppCompatActivity {
         //retreive uID from intent
         final String friendID = getIntent().getExtras().getString("uID","defaultKey");
 
+        EditFriendDisplayName = (EditText) findViewById(R.id.EditFriendDisplayName);
+        EditFriendDisplayName.setText(Me.getDisplayName(friendID));
+
         home = (Button) findViewById(R.id.home);
         friendsList = (Button) findViewById(R.id.friendsList);
         addFriend = (Button) findViewById(R.id.addFriend);
@@ -47,7 +51,19 @@ public class EditFriendsActivity extends AppCompatActivity {
         EditFriendSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Me.editDisplayName(friendID, EditFriendDisplayName.getText().toString());
+                String newname = EditFriendDisplayName.getText().toString();
+                if(newname.equals("")){
+                    Toast.makeText(EditFriendsActivity.this, "Display name connot be empty", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Me.editDisplayName(friendID, EditFriendDisplayName.getText().toString());
+                    Intent i = new Intent(getApplicationContext(), FriendsListActivity.class);
+                    i.setExtrasClassLoader(getClassLoader());
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("User", Me);
+                    i.putExtra("bundle",bundle);
+                    startActivity(i);
+                }
 
             }
         });
@@ -56,6 +72,12 @@ public class EditFriendsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Me.removeFriend(friendID);
+                Intent i = new Intent(getApplicationContext(), FriendsListActivity.class);
+                i.setExtrasClassLoader(getClassLoader());
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("User", Me);
+                i.putExtra("bundle",bundle);
+                startActivity(i);
             }
         });
 
