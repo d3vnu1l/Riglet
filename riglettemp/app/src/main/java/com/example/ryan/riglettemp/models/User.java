@@ -13,6 +13,7 @@ public class User implements Parcelable{
     private String firstName;
     private String lastName;
     private boolean gender;
+    private String firebaseId;
     private String uID;
     private ArrayList<Friend> Friends;
     private String email;
@@ -30,6 +31,7 @@ public class User implements Parcelable{
         out.writeString(firstName);
         out.writeString(lastName);
         out.writeValue(gender);
+        out.writeString(firebaseId);
         out.writeString(uID);
         out.writeList(Friends);
         out.writeString(email);
@@ -51,6 +53,7 @@ public class User implements Parcelable{
         this.firstName = in.readString();
         this.lastName = in.readString();
         this.gender = (boolean)in.readValue( null );
+        this.firebaseId = in.readString();
         this.uID = in.readString();
         this.Friends = new ArrayList<Friend>();
         in.readList(this.Friends, Friend.class.getClassLoader());
@@ -62,6 +65,7 @@ public class User implements Parcelable{
     public User(){
         this.firstName = new String();
         this.lastName = new String();
+        this.firebaseId = new String();
         this.gender = false;
         this.uID = "placeholderUID";
         this.email = "holder";
@@ -76,7 +80,18 @@ public class User implements Parcelable{
         this.email = "holder";
     }
 
-    //GET functions
+    //GET/SET functions
+
+    public void setFirebaseId(String firebaseId) {
+        this.firebaseId = firebaseId;
+    }
+    public String getFirebaseId() {
+        return firebaseId;
+    }
+
+    public String getuID() {
+        return uID;
+    }
     public String getFirstName(){ return firstName; }
     public String getLastName(){ return lastName;}
     public boolean getGender(){ return gender;}

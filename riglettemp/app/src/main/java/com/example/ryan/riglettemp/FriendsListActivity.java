@@ -13,6 +13,11 @@ import android.widget.Toast;
 import com.example.ryan.riglettemp.models.Friend;
 import com.example.ryan.riglettemp.models.FriendAdapter;
 import com.example.ryan.riglettemp.models.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -26,6 +31,7 @@ public class FriendsListActivity extends AppCompatActivity implements AdapterVie
     private ArrayList<Friend> friends;
     private boolean hasFriends = false;
     private ListView listView;
+    private FriendAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +53,7 @@ public class FriendsListActivity extends AppCompatActivity implements AdapterVie
 
         listView = (ListView) findViewById(R.id.friendListView);
 
+        /*
         if (Me.getFriendsSize() == 0) {
             Toast.makeText(FriendsListActivity.this, "You have not added any friends", Toast.LENGTH_SHORT).show();
         } else {
@@ -57,7 +64,14 @@ public class FriendsListActivity extends AppCompatActivity implements AdapterVie
             listView.setAdapter(adapter);
             listView.setOnItemClickListener(this);
         }
+        */
+        initFriends();
 
+        hasFriends = true;
+        adapter = new FriendAdapter(this, friends);
+        adapter.setCallback(this);
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(this);
 
         home.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +124,54 @@ public class FriendsListActivity extends AppCompatActivity implements AdapterVie
             }
         });
 
+    }
+
+    private void initFriends() {
+        friends = new ArrayList<Friend>(); // use to initialize existing coupons
+        // for now its unused, its only being use to
+        // instantiate ComplainArrayAdapter
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users")
+                .child(Me.getFirebaseId()).child("friends");
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final ArrayList<String> friendsID = new ArrayList<>();
+
+                //retrieve user complaints ID
+                for(DataSnapshot dataSP : dataSnapshot.getChildren())
+                    friendsID.add(dataSP.getKey());
+
+                //retrieve complains information
+                for(String friendID : friendsID) {
+                    friends.clear();
+                    DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users").child(friendID);
+                    mDatabase.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            adapter.add(new Friend(dataSnapshot.child("fullname").getValue().toString(),
+                                    "",
+                                    dataSnapshot.child("gender").getValue().toString().equals("m") ? true : false,
+                                    dataSnapshot.child("id").getValue().toString()));
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

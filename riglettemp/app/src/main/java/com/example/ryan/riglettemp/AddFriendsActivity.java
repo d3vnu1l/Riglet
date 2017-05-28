@@ -1,14 +1,23 @@
 package com.example.ryan.riglettemp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ryan.riglettemp.models.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AddFriendsActivity extends AppCompatActivity {
     private Button home;
@@ -17,11 +26,13 @@ public class AddFriendsActivity extends AppCompatActivity {
     private Button settings;
     private Button logOut;
     private EditText en_uID;
-    private User Me;
 
     private Button AddFriendDiscard;
     private Button AddFriendAddFriend;
 
+    private DatabaseReference mDatabase;
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    private User Me;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,18 +59,43 @@ public class AddFriendsActivity extends AppCompatActivity {
         AddFriendAddFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String firstName = "Place", lastName = "Holder";
                 boolean gen = false;
-                String uID = en_uID.getText().toString().trim();
+                final String newFriendsID = en_uID.getText().toString().trim();
                 //Verify uID and get other fields here from firebase
 
-                if (uID.equals("")) {
+                if (newFriendsID.equals("")) {
                     Toast.makeText(AddFriendsActivity.this, "Enter a unique ID", Toast.LENGTH_SHORT).show();
                 } else {
-                    Me.addFriend(firstName, lastName, gen, uID);
-                    Toast.makeText(AddFriendsActivity.this, "Friend Added", Toast.LENGTH_SHORT).show();
+                    mDatabase = FirebaseDatabase.getInstance().getReference();
+
+                    mDatabase.child("usersemailsid").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if(dataSnapshot.hasChild(newFriendsID)) {
+                                mDatabase.child("users").child(Me.getFirebaseId()).child("friends")
+                                        .child(dataSnapshot.child(newFriendsID).getValue().toString()).setValue(true);
+                                mDatabase.child("users").child((String) dataSnapshot.child(newFriendsID).getValue())
+                                        .child("friends").child(Me.getFirebaseId()).setValue(true);
+                                //Me.addFriend(firstName, lastName, gen, newFriendsID);
+                                Toast.makeText(AddFriendsActivity.this, "Friend Added", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(AddFriendsActivity.this, "ID not found!",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
+
+                en_uID.setText("");
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
+
             }
         });
 

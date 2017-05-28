@@ -3,12 +3,15 @@ package com.example.ryan.riglettemp;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.ryan.riglettemp.models.User;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class EditFriendsActivity extends AppCompatActivity {
     private Button home;
@@ -47,6 +50,7 @@ public class EditFriendsActivity extends AppCompatActivity {
         EditFriendSave = (Button) findViewById(R.id.EditFriendSave);
         EditFriendDelete = (Button) findViewById(R.id.EditFriendDelete);
 
+        Log.d("rigletdebug", friendID);
 
         EditFriendSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,12 +76,21 @@ public class EditFriendsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Me.removeFriend(friendID);
+                finish();
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("users")
+                        .child(Me.getFirebaseId()).child("friends").child(friendID);
+                mDatabase.removeValue();
+                mDatabase = FirebaseDatabase.getInstance().getReference().child("users")
+                        .child(friendID).child("friends").child(Me.getFirebaseId());
+                mDatabase.removeValue();
+
                 Intent i = new Intent(getApplicationContext(), FriendsListActivity.class);
                 i.setExtrasClassLoader(getClassLoader());
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("User", Me);
                 i.putExtra("bundle",bundle);
                 startActivity(i);
+
             }
         });
 

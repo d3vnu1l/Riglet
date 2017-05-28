@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">riglettemp</string>
+    <string name="app_name">riglet</string>
 
     <string name="title_activity_signup_activity">signup_activity</string>
     <string name="dummy_button">Dummy Button</string>

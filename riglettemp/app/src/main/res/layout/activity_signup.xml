@@ -38,8 +38,10 @@
 
             <EditText
                 android:id="@+id/enter_fn"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:singleLine="true"
                 android:fontFamily="cursive"
                 android:gravity="center"
                 android:hint="First Name" />
@@ -61,6 +63,8 @@
 
             <EditText
                 android:id="@+id/enter_ln"
+                android:singleLine="true"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="cursive"
@@ -84,10 +88,12 @@
 
             <EditText
                 android:id="@+id/enter_id"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="cursive"
                 android:gravity="center"
+                android:singleLine="true"
                 android:hint="Unique ID" />
         </LinearLayout>
 
@@ -107,10 +113,12 @@
 
             <EditText
                 android:id="@+id/SignUpEmail"
+                android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="cursive"
                 android:gravity="center"
+                android:singleLine="true"
                 android:hint="E-mail" />
         </LinearLayout>
 
@@ -178,10 +186,12 @@
 
             <EditText
                 android:id="@+id/enter_gender"
+                android:imeOptions="actionDone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="cursive"
                 android:gravity="center"
+                android:singleLine="true"
                 android:hint="(M/F)" />
         </LinearLayout>
 

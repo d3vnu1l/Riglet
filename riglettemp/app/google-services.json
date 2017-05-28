@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "278685184459",
+    "firebase_url": "https://riglet-995c5.firebaseio.com",
+    "project_id": "riglet-995c5",
+    "storage_bucket": "riglet-995c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278685184459:android:0ef9777f99b45f10",
+        "android_client_info": {
+          "package_name": "com.example.ryan.riglettemp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "278685184459-jtanar0r3758ohm1msrt73cvqamn38eq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ryan.riglettemp",
+            "certificate_hash": "26748cec11515b7182c1ea071f75dcf6e220d281"
+          }
+        },
+        {
+          "client_id": "278685184459-lo40ss6qirvomchsi521jqm4qhv1v03e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYfVsqAqRBBdRLi7wDOyvmEzXYyHCF0tg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "278685184459-lo40ss6qirvomchsi521jqm4qhv1v03e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

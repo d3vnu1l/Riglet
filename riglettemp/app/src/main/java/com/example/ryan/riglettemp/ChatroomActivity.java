@@ -15,6 +15,11 @@ import android.widget.Toast;
 import com.example.ryan.riglettemp.models.ChatAdapter;
 import com.example.ryan.riglettemp.models.Message;
 import com.example.ryan.riglettemp.models.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +41,10 @@ public class ChatroomActivity extends AppCompatActivity {
     private User Me;
     private boolean hasMessages = false;
     private String friendID;
+    private String chatId;
+    private DatabaseReference mDatabase;
+    private int numOfMessage;
+    private int messagePtr = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +58,48 @@ public class ChatroomActivity extends AppCompatActivity {
         i.setExtrasClassLoader(getClassLoader());
         final String friendID = getIntent().getExtras().getString("uID","defaultKey");
 
+        //init chat database START
+        if(Me.getFirebaseId().compareTo(friendID) > 0)
+            chatId = friendID + Me.getFirebaseId();
+        else
+            chatId = Me.getFirebaseId() + friendID;
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child("chatroom").hasChild(chatId)) {
+                    initChat();
+                } else {
+                    adapter.clear();
+                    mDatabase.child("chatroom").child(chatId).child("numOfMessage").setValue(0);
+                }
+
+                ValueEventListener numcomplainsListener = new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        // Get Post object and use the values to update the UI
+                        numOfMessage = dataSnapshot.getValue(Integer.class);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        // Getting Post failed, log a message
+                        Log.w("loadPost:onCancelled", databaseError.toException());
+                    }
+                };
+                mDatabase.child("chatroom").child(chatId).child("numOfMessage")
+                        .addValueEventListener(numcomplainsListener);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+        //init chat database END
 
         //XML items
         home = (Button) findViewById(R.id.Home);
@@ -56,11 +107,8 @@ public class ChatroomActivity extends AppCompatActivity {
         addFriend = (Button) findViewById(R.id.AddFriend);
         settings = (Button) findViewById(R.id.Settings);
         logOut = (Button) findViewById(R.id.LogOut);
-
         FriendName = (TextView) findViewById(R.id.FriendName);
         FriendName.setText(Me.getDisplayName(friendID));
-
-
         btnSend = findViewById(R.id.btn_chat_send);
         messageInput = (EditText) findViewById(R.id.msg_type);
 
@@ -69,13 +117,13 @@ public class ChatroomActivity extends AppCompatActivity {
         listView = (ListView) findViewById(R.id.list_msg);
 
         //check if there are any messages to display
-        if (Me.getMessagesSize(friendID) == 0) {
-            Toast.makeText(ChatroomActivity.this, "No messages to display", Toast.LENGTH_SHORT).show();
-        }
-        else {
-            hasMessages = true;
+        //if (Me.getMessagesSize(friendID) == 0) {
+        //    Toast.makeText(ChatroomActivity.this, "No messages to display", Toast.LENGTH_SHORT).show();
+        //}
+        //else {
+        //    hasMessages = true;
             listView.setAdapter(adapter);
-        }
+        //}
 
         //send event
         btnSend.setOnClickListener(new View.OnClickListener() {
@@ -88,11 +136,20 @@ public class ChatroomActivity extends AppCompatActivity {
                 if (messageInput.getText().toString().trim().equals("")) {
                     Toast.makeText(ChatroomActivity.this, "Please input some text...", Toast.LENGTH_SHORT).show();
                 } else {
-                    //add message to list
-                    Me.addMessage(friendID, messageInput.getText().toString(), true);
+                    //add message to list at database
+                    numOfMessage++;
+                    mDatabase = FirebaseDatabase.getInstance().getReference().child("chatroom").child(chatId);
+                    mDatabase.child("numOfMessage").setValue(numOfMessage);
+                    mDatabase.child(String.valueOf(numOfMessage)).child("text").setValue(messageInput.getText().toString());
+                    mDatabase.child(String.valueOf(numOfMessage)).child("sender").setValue(Me.getFirebaseId());
+
+                    //add message to list locally
+                    //gfMe.addMessage(friendID, messageInput.getText().toString(), true);
                     adapter.notifyDataSetChanged();
                     messageInput.setText("");
                 }
+
+
             }
         });
 
@@ -152,10 +209,53 @@ public class ChatroomActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-
-
     }
+
+    private void initChat() {
+        //clear chat
+        adapter.clear();
+        // instantiate ComplainArrayAdapter
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().child("chatroom").
+                child(chatId);
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                final ArrayList<String> messageIDs = new ArrayList<>();
+
+                //retrieve user complaints ID
+                for(DataSnapshot dataSP : dataSnapshot.getChildren())
+                    messageIDs.add(dataSP.getKey());
+
+                //retrieve complains information
+                DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().
+                        child("chatroom").child(chatId);
+                mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for(int i=messagePtr; i<messageIDs.size()-1; i++) {
+                            String text = (String) dataSnapshot.child(messageIDs.get(i)).child("text").getValue();
+                            String senderId = (String) dataSnapshot.child(messageIDs.get(i)).child("sender").getValue();
+                            Me.addMessage(friendID, text, senderId.equals(Me.getFirebaseId()));
+                            messagePtr++;
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
     @Override
     public void onBackPressed() {
         moveTaskToBack(true);
