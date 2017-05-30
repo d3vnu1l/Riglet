@@ -64,6 +64,8 @@ public class ChatroomActivity extends AppCompatActivity {
         else
             chatId = Me.getFirebaseId() + friendID;
 
+        Log.d("debug118", chatId);
+
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -224,8 +226,10 @@ public class ChatroomActivity extends AppCompatActivity {
                 final ArrayList<String> messageIDs = new ArrayList<>();
 
                 //retrieve user complaints ID
-                for(DataSnapshot dataSP : dataSnapshot.getChildren())
+                for(DataSnapshot dataSP : dataSnapshot.getChildren()) {
                     messageIDs.add(dataSP.getKey());
+
+                }
 
                 //retrieve complains information
                 DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference().
@@ -235,8 +239,10 @@ public class ChatroomActivity extends AppCompatActivity {
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for(int i=messagePtr; i<messageIDs.size()-1; i++) {
                             String text = (String) dataSnapshot.child(messageIDs.get(i)).child("text").getValue();
+                            Log.d("debug118", text);
                             String senderId = (String) dataSnapshot.child(messageIDs.get(i)).child("sender").getValue();
                             Me.addMessage(friendID, text, senderId.equals(Me.getFirebaseId()));
+
                             messagePtr++;
                         }
                         adapter.notifyDataSetChanged();
