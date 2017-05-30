@@ -45,6 +45,7 @@ public class ChatroomActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private int numOfMessage;
     private int messagePtr = 0;
+    private String friendId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,7 @@ public class ChatroomActivity extends AppCompatActivity {
         Bundle oldBundle = i.getBundleExtra("bundle");
         Me = oldBundle.getParcelable("User");
         i.setExtrasClassLoader(getClassLoader());
-        final String friendID = getIntent().getExtras().getString("uID","defaultKey");
+        friendID = getIntent().getExtras().getString("uID","defaultKey");
 
         //init chat database START
         if(Me.getFirebaseId().compareTo(friendID) > 0)
@@ -236,7 +237,10 @@ public class ChatroomActivity extends AppCompatActivity {
                         for(int i=messagePtr; i<messageIDs.size()-1; i++) {
                             String text = (String) dataSnapshot.child(messageIDs.get(i)).child("text").getValue();
                             String senderId = (String) dataSnapshot.child(messageIDs.get(i)).child("sender").getValue();
-                            Me.addMessage(friendID, text, senderId.equals(Me.getFirebaseId()));
+                            String isMe = Me.getFirebaseId();
+                            if (isMe.equals(senderId))
+                                Me.addMessage(friendID, text, true);
+                            else Me.addMessage(friendID, text, false);
                             messagePtr++;
                         }
                         adapter.notifyDataSetChanged();
