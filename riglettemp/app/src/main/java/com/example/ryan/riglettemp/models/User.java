@@ -2,6 +2,7 @@ package com.example.ryan.riglettemp.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -86,6 +87,7 @@ public class User implements Parcelable{
         this.firebaseId = firebaseId;
     }
     public String getFirebaseId() {
+        Log.d("fid", firebaseId);
         return firebaseId;
     }
 
@@ -183,8 +185,10 @@ public class User implements Parcelable{
     //Find function (INTERNAL use only)
     //note this is terribly inefficient, hashmap would be better
     private int findFriendIndex(String uID){
+        //Log.d("Called: ", uID);
         for (int i = 0; i < this.Friends.size(); i++) {
             if ((this.Friends.get(i).getUID()).equals(uID)) {
+                Log.d("Index: ", String.valueOf(i));
                 return i;
             }
         }
