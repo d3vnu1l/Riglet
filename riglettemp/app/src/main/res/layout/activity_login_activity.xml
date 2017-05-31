@@ -42,18 +42,17 @@
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
                 android:gravity="center"
-                android:text="Unique ID: "
+                android:text="Email        : "
                 android:textSize="24sp" />
 
             <EditText
                 android:id="@+id/enter_username"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="cursive"
+                android:fontFamily="arial"
                 android:singleLine="true"
                 android:imeOptions="actionNext"
-                android:gravity="center"
-                android:hint="Unique ID" />
+                android:gravity="center"/>
 
         </LinearLayout>
 
@@ -77,9 +76,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:imeOptions="actionDone"
-                android:fontFamily="cursive"
+                android:fontFamily="arial"
                 android:gravity="center"
-                android:hint="Password"
                 android:inputType="textPassword" />
 
         </LinearLayout>

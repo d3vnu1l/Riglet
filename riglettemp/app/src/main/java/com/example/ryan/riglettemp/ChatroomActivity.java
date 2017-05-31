@@ -245,8 +245,9 @@ public class ChatroomActivity extends AppCompatActivity {
 
                             String isMe = Me.getFirebaseId();
                             if (isMe.equals(senderId))
-                                Me.addMessage(friendID, text, true);
-                            else Me.addMessage(friendID, text, false);
+                                Me.addMessage(friendID, text.contains("fuck") ? "****" : text, true);
+                            else
+                                Me.addMessage(friendID, text.contains("fuck") ? "****" : text, false);
 
                             messagePtr++;
                         }

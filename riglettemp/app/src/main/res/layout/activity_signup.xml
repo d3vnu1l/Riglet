@@ -42,7 +42,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:singleLine="true"
-                android:fontFamily="cursive"
+                android:fontFamily="arial"
                 android:gravity="center"
                 android:hint="First Name" />
         </LinearLayout>
@@ -67,7 +67,7 @@
                 android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="cursive"
+                android:fontFamily="arial"
                 android:gravity="center"
                 android:hint="Last Name" />
         </LinearLayout>
@@ -91,7 +91,7 @@
                 android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="cursive"
+                android:fontFamily="arial"
                 android:gravity="center"
                 android:singleLine="true"
                 android:hint="Unique ID" />
@@ -116,7 +116,7 @@
                 android:imeOptions="actionNext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="cursive"
+                android:fontFamily="arial"
                 android:gravity="center"
                 android:singleLine="true"
                 android:hint="E-mail" />
@@ -140,7 +140,7 @@
                 android:id="@+id/enter_pass"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="cursive"
+                android:fontFamily="arial"
                 android:gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"/>
@@ -164,7 +164,7 @@
                 android:id="@+id/reEnter_pass"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="cursive"
+                android:fontFamily="arial"
                 android:gravity="center"
                 android:hint="Password"
                 android:inputType="textPassword"/>
@@ -189,7 +189,7 @@
                 android:imeOptions="actionDone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="cursive"
+                android:fontFamily="arial"
                 android:gravity="center"
                 android:singleLine="true"
                 android:hint="(M/F)" />
